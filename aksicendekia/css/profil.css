@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #F6F8FD;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #181230;
+    padding: 16px 0px;
+    /* Ubah warna latar belakang navbar */
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 14px;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff !important;
+    /* Warna teks untuk brand dan link */
+}
+
+.navbar-collapse {
+    justify-content: center;
+    /* Pusatkan nav */
+}
+
+.navbar-toggler {
+    border: none;
+    /* Hapus border pada tombol toggler */
+}
+
+.btn-masuk {
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-weight: 600;
+    /* Border radius 100% pada tombol search */
+}
+
+.navbar-toggler-icon {
+    background-color: #fff;
+    /* Warna background icon toggler */
+}
+
+.navbar-nav {
+    text-align: center;
+    /* Pusatkan nav-item */
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: left !important;
+        /* Geser ke kiri pada versi mobile */
+    }
+
+    .btn-masuk {
+        border-radius: 100px;
+        padding: 5px 10px;
+        font-weight: 600;
+        font-size: 14px;
+        /* Border radius 100% pada tombol search */
+    }
+}
+
+/* End Navbar */
+
+/* Hero */
+
+.hero{
+    background-color: #181230;
+    height: 520px;
+}
+
+.hero-kanan img{
+    margin-top: 30px;
+}
+
+.hero-kiri .stempel{
+    padding: 0px 20px;
+    height: 30px;
+    width: 220px;
+    color: white;
+    background-image: linear-gradient(to bottom right,#7289FF,#5A41F4);
+    border-radius: 100px;
+    margin-top: 70px;
+}
+
+.hero-kiri .stempel p{
+   color: #fff;
+}
+
+.hero-kiri h1 {
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 140%;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.hero-kiri h1 span {
+    color: #47BB8E;
+}
+
+.hero-kiri p {
+    color: #A8A3BB;
+    font-size: 18px;
+    line-height: 150%;
+}
+
+.hero-kiri .btn-ppdb {
+    color: #ffffff;
+    margin-top: 16px;
+    background-color: #2447F9;
+    border: none;
+    border-radius: 100px;
+    padding: 15px 20px;
+
+}
+
+.hero-kiri .btn-ppdb:hover{
+    background-color: #1030cf;
+}
+
+.hero-kiri .btn-ppdb img {
+    margin-right: 10px;
+    transform: rotate(90deg);
+}
+
+
+.hero-kanan img {
+    height: 360px;
+    /* margin-left: 10%; */
+    margin-top: 50px;
+}
+
+.carousel-control-prev-icon {
+    color: #262626;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        margin-bottom: 0px;
+        height: 450px;
+    }
+
+    .hero-kanan {
+        display: none;
+    }
+
+.hero-kiri .stempel{
+    padding: 4px 20px;
+    width: 200px;
+    margin-top: 70px;
+}
+
+    .hero-kiri {
+        margin-top: -40px;
+    }
+
+    .hero-kiri h1 {
+        font-size: 40px;
+    }
+
+    .hero-kiri p {
+        font-size: 14px;
+    }
+
+    .hero-kiri .btn-ppdb {
+        margin-bottom: 24px;
+    }
+
+    .hero-kiri .btn-ppdb:hover{
+        background-color: #1030cf;
+    }
+}
+
+/* End Hero */
+
+/* Content*/
+.content{
+    padding: 0px 60px;
+    margin-bottom: 80px;
+}
+
+.content .header h1{
+    font-size: 24px;
+    color: #262626;
+    font-weight: 600;
+    font-size: 36px;
+    margin-top: 64px;
+    margin-bottom: 64px;
+}
+
+.content-1 .content-kiri img{
+    height: 430px;
+}
+
+.content-1 .content-kanan h1{
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    margin-top: 40px;
+}
+
+.content-1 .content-kanan p{
+    font-size: 14px;
+    color: #666666;
+}
+
+.content-2 .content-kanan img{
+    height: 370px;
+}
+
+.content-2 .content-kiri h1{
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    margin-top: 140px;
+}
+
+.content-2 .content-kiri p{
+    font-size: 14px;
+    color: #666666;
+}
+/* End Content */
+
+/* Pilar Utama */
+
+.pilar-utama{
+    margin-bottom: 100px;
+}
+
+.pilar-utama .header h3{
+    font-size: 16px;
+    color: #1030cf;
+}
+
+.pilar-utama .header h1{
+        color: #262626;
+        font-weight: 600;
+        font-size: 40px;
+        margin-top: 20px;
+    }
+
+    .pilar-utama .header h1 span{
+        color: #1030cf;
+    }
+
+.pilar-utama .header p{
+    color: #666666;
+}
+
+.content-pilar img{
+    margin-top: 40px;
+    margin-bottom: 16px;
+}
+
+.content-pilar h3{
+    color: #262626;
+    font-size: 22px;
+    font-weight: 600;
+}
+.content-pilar p{
+    color: #666666;
+    font-size: 16px;
+}
+/* End Pilar Utama */
+
+.news{
+    height: 300px;
+    background-color: #1786FA;
+    margin-bottom: 100px;
+    border-radius: 20px;
+    color: #ffffff;
+    padding: 60px 60px;
+}
+
+.news h1{
+    font-weight: 700;
+}
+
+.news input{
+    width: 800px;
+}
+
+/* Footer */
+.footer {
+    height: 300px;
+    margin-top: 120px;
+}
+
+.footer h5 {
+    font-weight: 600;
+}
+
+.footer a {
+    color: #8E8E8E;
+    text-decoration: none;
+}
+
+.footer p {
+    color: #8E8E8E;
+    margin-top: 20px;
+    /* margin-bottom: 10px; */
+}
+/* End Footer */
+
+
+
+
+
+@media (max-width: 767px) {
+
+.content .header h1{
+    font-size: 28px;
+}
+
+.content-2 {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.content-2 .content-kanan {
+    order: -1;
+}
+
+.content-2 .content-kanan img{
+    margin-bottom: -100px;
+}
+.content-1 .content-kiri img{
+    height: 300px;
+}
+.content-2 .content-kanan img{
+    height: 300px;
+}
+
+.content-1 .content-kanan h1{
+    font-size: 24px;
+    margin-top: -10px;
+}
+
+.content-2 .content-kiri h1{
+    font-size: 24px;
+}
+
+    .pilar-utama .header h3 {
+        font-size: 16px;
+        color: #1786FA;
+    }
+
+    .pilar-utama .header h1 {
+        color: #262626;
+        font-weight: 700;
+        font-size: 24px;
+        margin-top: 20px;
+    }
+
+.news{
+    margin-top: -50px;
+    height: 380px;
+}
+
+    .news input{
+        width: 300px;
+    }
+
+}

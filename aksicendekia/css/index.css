@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #F6F8FD;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #181230;
+    padding: 16px 0px;
+    /* Ubah warna latar belakang navbar */
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 14px;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff !important;
+    /* Warna teks untuk brand dan link */
+}
+
+.navbar-collapse {
+    justify-content: center;
+    /* Pusatkan nav */
+}
+
+.navbar-toggler {
+    border: none;
+    /* Hapus border pada tombol toggler */
+}
+
+.btn-masuk {
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-weight: 600;
+    /* Border radius 100% pada tombol search */
+}
+
+.navbar-toggler-icon {
+    background-color: #fff;
+    /* Warna background icon toggler */
+}
+
+.navbar-nav {
+    text-align: center;
+    /* Pusatkan nav-item */
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: left !important;
+        /* Geser ke kiri pada versi mobile */
+    }
+
+    .btn-masuk {
+        border-radius: 100px;
+        padding: 5px 10px;
+        font-weight: 600;
+        font-size: 14px;
+        /* Border radius 100% pada tombol search */
+    }
+}
+
+/* End Navbar */
+
+/* Hero */
+
+.hero{
+    background-color: #181230;
+    height: 600px;
+}
+
+.hero-kanan img{
+    margin-top: 30px;
+}
+
+.hero-kiri .stempel{
+    padding: 0px 20px;
+    height: 30px;
+    width: 220px;
+    color: white;
+    background-image: linear-gradient(to bottom right,#7289FF,#5A41F4);
+    border-radius: 100px;
+    margin-top: 70px;
+}
+
+.hero-kiri .stempel p{
+   color: #fff;
+}
+
+.hero-kiri h1 {
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 140%;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.hero-kiri h1 span {
+    color: #47BB8E;
+}
+
+.hero-kiri p {
+    color: #A8A3BB;
+    font-size: 18px;
+    line-height: 150%;
+}
+
+.hero-kiri .btn-ppdb {
+    color: #ffffff;
+    margin-top: 16px;
+    background-color: #2447F9;
+    border: none;
+    border-radius: 100px;
+    padding: 15px 20px;
+
+}
+
+.hero-kiri .btn-ppdb:hover{
+    background-color: #1030cf;
+}
+
+.hero-kiri .btn-ppdb img {
+    margin-right: 10px;
+}
+
+
+.hero-kanan img {
+    height: 450px;
+    margin-left: 10%;
+}
+
+.carousel-control-prev-icon {
+    color: #262626;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        margin-bottom: 0px;
+        height: 450px;
+    }
+
+    .hero-kanan {
+        display: none;
+    }
+
+.hero-kiri .stempel{
+    padding: 4px 20px;
+    width: 200px;
+    margin-top: 70px;
+}
+
+    .hero-kiri {
+        margin-top: -40px;
+    }
+
+    .hero-kiri h1 {
+        font-size: 40px;
+    }
+
+    .hero-kiri p {
+        font-size: 14px;
+    }
+
+    .hero-kiri .btn-ppdb {
+        margin-bottom: 24px;
+    }
+
+    .hero-kiri .btn-ppdb:hover{
+        background-color: #1030cf;
+    }
+}
+
+/* End Hero */
+
+/* Partnership */
+.partnership .header h3{
+    font-size: 24px;
+    font-weight: 600;
+    color: #2447F9;
+    margin-top: 60px;
+}
+
+.partnership .header h1{
+    font-size: 40px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 20px;
+}
+
+
+.slider-container {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+      margin: 50px auto;
+    }
+
+    .slider-wrapper {
+      display: flex;
+      animation: scroll 100s linear infinite;
+    }
+
+    .slide {
+      min-width: 818px;
+      height: 250px;
+      box-sizing: border-box;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes scroll {
+      0%, 25% {
+        transform: translateX(0);
+      }
+      25%, 50% {
+        transform: translateX(-818px);
+      }
+      50%, 75% {
+        transform: translateX(-1636px);
+      }
+      75%, 100% {
+        transform: translateX(0);
+      }
+    }
+
+@media (max-width: 768px) {
+    .partnership .header h3{
+        font-size: 16px;
+        margin-top: 60px;
+    }
+
+    .partnership .header h1{
+        font-size: 28px;
+    }
+}
+
+/* End Partnership */
+
+/* Review */
+.review{
+    height: 520px;
+    background-image: url(./asset/foto/backgroundReview.png);
+    background-size: cover;
+    margin-top: 100px;
+}
+
+.review .hero-kiri .trust{
+    color: #47BB8E;
+    font-weight: 600;
+    margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+    .review {
+        margin-bottom: 0px;
+        height: 400px;
+    }
+
+    .review .hero-kanan {
+        display: none;
+    }
+
+    .review .hero-kiri .stempel{
+    padding: 4px 20px;
+    width: 200px;
+    margin-top: 70px;
+}
+
+    .hero-kiri {
+        margin-top: -40px;
+    }
+
+    .review .hero-kiri h1 {
+        font-size: 40px;
+    }
+
+    .review .hero-kiri p {
+        font-size: 14px;
+    }
+
+    .hero-kiri .btn-ppdb {
+        margin-bottom: 24px;
+    }
+
+    .hero-kiri .btn-ppdb:hover{
+        background-color: #1030cf;
+    }
+}
+/* End Review */
+
+/* Galang */
+
+.galang h3{
+    font-size: 24px;
+    font-weight: 600;
+    color: #2447F9;
+    margin-bottom: 20px;
+}
+
+.galang h1{
+    font-size: 40px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 60px;
+}
+
+.card-body .penyelenggara{
+    font-weight: 600;
+    color: #2447F9;
+    font-size: 14px;
+}
+
+.card-body h5{
+    font-weight: 600;
+    margin-bottom: 32px;
+}
+
+.nominal{
+    font-size: 12px;
+}
+
+.nominal span{
+    color: #2447F9;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.card{
+    border: none;
+    padding: 4px 4px;
+    width: 340px;
+    margin: auto;
+}
+
+
+@media (max-width: 768px) {
+   .galang h3{
+    font-size: 16px;
+    text-align: center;
+   }
+
+   .galang h1{
+    font-size: 28px;
+    text-align: center;
+   }
+
+   .galang .card{
+    margin-bottom: 160px;
+   }
+}
+
+/* End Galang */
+
+/* Footer */
+
+/* Footer */
+.footer {
+    height: 300px;
+    margin-top: 120px;
+}
+
+.footer h5 {
+    font-weight: 600;
+}
+
+.footer a {
+    color: #8E8E8E;
+    text-decoration: none;
+}
+
+.footer p {
+    color: #8E8E8E;
+    margin-top: 20px;
+    /* margin-bottom: 10px; */
+}
+/* End Footer */
+
+/* End Footer */

@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+
+*{
+    font-family: 'Montserrat',sans-serif;
+}
+
+.container{
+    margin-top: 80px;
+}
+
+.element img{
+    margin-bottom: 24px;
+}
+
+.element h1{
+    font-weight: 600;
+}
+
+.btn-donatur{
+    color: #2A52FA;
+    margin-top: 16px;
+    background-color: #ffffff;
+    border: 1.5px solid #2A52FA;
+    border-radius: 100px;
+    width: 400px;
+    padding: 16px 0px;
+    font-weight: 600;
+}
+
+.btn-donatur:hover{
+    background-color: #ededed;
+    border: 1.8px solid #2A52FA;
+    color: #2A52FA;
+}
+
+.btn-mahasiswa{
+    color: #ffffff;
+    margin-top: 16px;
+    background-color: #2A52FA;
+    border: none;
+    border-radius: 100px;
+    width: 400px;
+    padding: 16px 0px;
+    font-weight: 600;
+}
+
+.btn-mahasiswa:hover{
+    background-color: #1038d6;
+    color: white;
+}

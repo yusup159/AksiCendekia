@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #F6F8FD;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #181230;
+    padding: 16px 0px;
+    /* Ubah warna latar belakang navbar */
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 14px;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff !important;
+    /* Warna teks untuk brand dan link */
+}
+
+.navbar-collapse {
+    justify-content: center;
+    /* Pusatkan nav */
+}
+
+.navbar-toggler {
+    border: none;
+    /* Hapus border pada tombol toggler */
+}
+
+.btn-masuk {
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-weight: 600;
+    /* Border radius 100% pada tombol search */
+}
+
+.navbar-toggler-icon {
+    background-color: #fff;
+    /* Warna background icon toggler */
+}
+
+.navbar-nav {
+    text-align: center;
+    /* Pusatkan nav-item */
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: left !important;
+        /* Geser ke kiri pada versi mobile */
+    }
+
+    .btn-masuk {
+        border-radius: 100px;
+        padding: 5px 10px;
+        font-weight: 600;
+        font-size: 14px;
+        /* Border radius 100% pada tombol search */
+    }
+}
+
+/* End Navbar */

@@ -1,0 +1,24 @@
+
+/* Footer */
+.footer {
+    height: 300px;
+    margin-top: 120px;
+}
+
+.footer h5 {
+    font-weight: 600;
+}
+
+.footer a {
+    color: #8E8E8E;
+    text-decoration: none;
+}
+
+.footer p {
+    color: #8E8E8E;
+    margin-top: 20px;
+    /* margin-bottom: 10px; */
+}
+/* End Footer */
+
+/* End Footer */

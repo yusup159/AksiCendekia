@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #F6F8FD;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #181230;
+    padding: 16px 0px;
+    /* Ubah warna latar belakang navbar */
+}
+
+.profile-link{
+    margin-right: 16px;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 14px;
+}
+
+.search-bar .search{
+    padding: 10px;
+    padding-left: 24px;
+    width: 300px;
+    background-color: #181230;
+    border-radius: 100px;
+    color: white;
+}
+
+.search::placeholder{
+    color: rgba(255, 255, 255, 0.416);
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff !important;
+    /* Warna teks untuk brand dan link */
+}
+
+.navbar-collapse {
+    justify-content: center;
+    /* Pusatkan nav */
+}
+
+.btn-search {
+    background-color: #47BB8E;
+    height: 45px;
+    width: 64px;
+    border-radius: 100px;
+}
+
+.btn-search:hover {
+    background-color: #28976c;
+    height: 45px;
+    width: 64px;
+    border-radius: 100px;
+}
+
+.navbar-toggler {
+    border: none;
+    /* Hapus border pada tombol toggler */
+}
+
+.btn-masuk {
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-weight: 600;
+    /* Border radius 100% pada tombol search */
+}
+
+.navbar-toggler-icon {
+    background-color: #fff;
+    /* Warna background icon toggler */
+}
+
+.navbar-nav {
+    text-align: center;
+    /* Pusatkan nav-item */
+}
+
+.profile{
+    height: 40px;
+    width: 40px;
+    border-radius: 100px;
+    border: 3px solid #47BB8E;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: left !important;
+        /* Geser ke kiri pada versi mobile */
+    }
+
+    .btn-masuk {
+        border-radius: 100px;
+        padding: 5px 10px;
+        font-weight: 600;
+        font-size: 14px;
+        /* Border radius 100% pada tombol search */
+    }
+}
+
+/* End Navbar */
+
+/* Hero */
+
+.hero{
+    background-color: #181230;
+    height: 350px;
+}
+
+.hero-kiri{
+    margin: auto;
+    text-align: center;
+}
+
+.hero-kiri .stempel{
+    padding: 0px 20px;
+    height: 30px;
+    width: 220px;
+    color: white;
+    background-image: linear-gradient(to bottom right,#7289FF,#5A41F4);
+    border-radius: 100px;
+    margin-top: 70px;
+}
+
+.hero-kiri .stempel p{
+   color: #fff;
+}
+
+.hero-kiri h1 {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 140%;
+    margin-top: 50px;
+    color: #fff;
+}
+
+.hero-kiri h1 span {
+    color: #47BB8E;
+}
+
+.hero-kiri p {
+    color: #A8A3BB;
+    font-size: 14px;
+    line-height: 150%;
+}
+
+.bungkus-galang .link{
+    color: #181230;
+}
+
+
+.hero-kanan img {
+    height: 400px;
+    margin-left: 10%;
+}
+
+.carousel-control-prev-icon {
+    color: #262626;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        margin-bottom: 0px;
+        height: 450px;
+    }
+
+    .hero-kanan {
+        display: none;
+    }
+
+.hero-kiri .stempel{
+    padding: 4px 20px;
+    width: 200px;
+    margin-top: 70px;
+}
+
+    .hero-kiri {
+        margin-top: -40px;
+    }
+
+    .hero-kiri h1 {
+        font-size: 40px;
+    }
+
+    .hero-kiri p {
+        font-size: 14px;
+    }
+
+    .hero-kiri .btn-ppdb {
+        margin-bottom: 24px;
+    }
+
+    .hero-kiri .btn-ppdb:hover{
+        background-color: #1030cf;
+    }
+}
+
+/* End Hero */
+/* Galang */
+
+.galang h3{
+    font-size: 24px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 20px;
+}
+
+.card-body .penyelenggara{
+    font-weight: 600;
+    color: #2447F9;
+    font-size: 14px;
+}
+
+.card-body h5{
+    font-weight: 600;
+    margin-bottom: 32px;
+}
+
+.nominal{
+    font-size: 12px;
+}
+
+.nominal span{
+    color: #2447F9;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.card{
+    border: none;
+    padding: 4px 4px;
+    width: 340px;
+    margin: auto;
+}
+
+
+@media (max-width: 768px) {
+   .galang h3{
+    font-size: 16px;
+    text-align: center;
+   }
+
+   .galang h1{
+    font-size: 28px;
+    text-align: center;
+   }
+
+   .galang .card{
+    margin-bottom: 160px;
+   }
+}
+
+/* End Galang */
+/* Banner */
+
+.banner{
+    height: 350px;
+    background-color: #e5e5e5;
+}
+
+
+
+.seeall .btn-seeall{
+    border: #2447F9 solid;
+    padding: 12px 32px ;
+    color: #2447F9;
+    border-radius: 100px;
+    font-weight: 600;
+}
+
+.seeall .btn-seeall:hover{
+    background-color: #2447F9;
+    color: white;
+}
+
+/* Banner */
+
+/* Footer */
+
+/* Footer */
+.footer {
+    height: 300px;
+    margin-top: 120px;
+}
+
+.footer h5 {
+    font-weight: 600;
+}
+
+.footer a {
+    color: #8E8E8E;
+    text-decoration: none;
+}
+
+.footer p {
+    color: #8E8E8E;
+    margin-top: 20px;
+    /* margin-bottom: 10px; */
+}
+/* End Footer */
+
+/* End Footer */

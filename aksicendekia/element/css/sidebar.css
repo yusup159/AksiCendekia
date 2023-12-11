@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body{
+    font-family: 'Poppins';
+}
+
+.main-sidebar{
+    background-color: #181230 !important;
+}
+
+.main-sidebar img{
+    height: 40px;
+}
+
+.content-wrapper{
+    padding: 0px 80px;
+}
+
+.donasi{
+    background-color: white;
+    height: 250px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 20px #eeeeee;
+    padding: 20px 40px;
+    margin-bottom: 24px;
+}
+
+.nav-item{
+    margin-bottom: 16px;
+}
+
+.nav-item p{
+    font-size: 14px;
+}
+
+.nav-item img{
+    height: 28px;
+    margin-right: 8px;
+}
+
+.donasi .judul{
+    color: #b5b5b5;
+}
+
+.donasi .point{
+    margin-top: -10px;
+    font-weight: 600;
+}
+
+.btn-galang{
+    width: 100%;
+    padding: 10px 24px;
+    border-radius: 100px;
+    border: none;
+    color:#fff;
+    background-color: #2447F9;
+    margin-top: 24px;
+}
