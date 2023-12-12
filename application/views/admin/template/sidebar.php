@@ -31,7 +31,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Data Penggalangan</a></li>
+                      <li><a href="#">Data Penggalangan</a></li>
                       <li><a href="<?php echo site_url('AuthAdmin/data_mahasiswa')?>">Data Mahasiswa</a></li>
                       <li><a href="<?php echo site_url('AuthAdmin/data_donatur')?>">Data Donatur</a></li>
                     </ul>

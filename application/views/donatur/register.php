@@ -32,7 +32,7 @@
                         <h3 class="fw-bold">Selamat Datang</h3>
                         <p>Silahkan masukkan username, email & kata sandi</p>
                     </div>
-                    <form method="post" action="<?php echo site_url('authdonatur/register');?>">
+                    <form method="post" action="<?php echo site_url('AuthDonatur/register');?>">
                     <div class="custom-input-group">
                         <img src="<?php echo base_url('aksicendekia/asset/icon/codicon_mail-1.svg')?>" alt="Email Icon" class="input-icon">
                         <input type="text" name="username" class="form-control custom-input" placeholder="Username"
@@ -57,7 +57,7 @@
                     </div>
                     <p class="text-center">
                         <span>Suda punya akun?</span>
-                        <a href="<?php echo site_url('authdonatur');?>" class="fw-bold text-primary link-masuk">Masuk</a>
+                        <a href="<?php echo site_url('AuthDonatur');?>" class="fw-bold text-primary link-masuk">Masuk</a>
                     </p>
                     </form>
                 </div>

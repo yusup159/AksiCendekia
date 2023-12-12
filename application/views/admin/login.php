@@ -30,7 +30,7 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form method="post" action="<?php echo site_url('authadmin/login');?>">
+            <form method="post" action="<?php echo site_url('AuthAdmin/login');?>">
               <h1>Login Form</h1>
                 <div>
                     <?php echo form_input(['name' => 'email', 'class' => 'form-control', 'placeholder' => 'Email', 'value' => set_value('email')]); ?>
@@ -66,7 +66,7 @@
 
         <div id="register" class="animate form registration_form">
           <section class="login_content">
-            <form method="post" action="<?php echo site_url('authadmin/register');?>">
+            <form method="post" action="<?php echo site_url('AuthAdmin/register');?>">
               <h1>Create Account</h1>
                 <div>
                     <?php echo form_input(['name' => 'username', 'class' => 'form-control', 'placeholder' => 'Username', 'value' => set_value('username')]); ?>

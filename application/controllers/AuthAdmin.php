@@ -12,7 +12,7 @@ class AuthAdmin extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('Admin/login');
+        $this->load->view('admin/login');
     }
 
     public function register()
@@ -22,7 +22,7 @@ class AuthAdmin extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('Admin/login');
+            $this->load->view('admin/login');
         } else {
             $data = array(
                 'username' => $this->input->post('username'),
@@ -32,7 +32,7 @@ class AuthAdmin extends CI_Controller {
             );
 
             $this->AuthModel->register_user($data);
-            redirect('authadmin'); 
+            redirect('AuthAdmin'); 
         }
     }
 
@@ -42,7 +42,7 @@ class AuthAdmin extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'required');
     
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('Admin/login');
+            $this->load->view('admin/login');
         } else {
             $email = $this->input->post('email');
             $password = $this->input->post('password');
@@ -58,17 +58,17 @@ class AuthAdmin extends CI_Controller {
     
                 $this->session->set_userdata($userdata);
     
-                redirect('authadmin/dashboard');
+                redirect('AuthAdmin/dashboard');
             } else {
                 $this->session->set_flashdata('error', 'Invalid email or password');
-                redirect('authadmin');
+                redirect('AuthAdmin');
             }
         }
     }
     public function logout()
 {
     $this->session->sess_destroy();
-    redirect('authadmin');
+    redirect('AuthAdmin');
 }
 
     

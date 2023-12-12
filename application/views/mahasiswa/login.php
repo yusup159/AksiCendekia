@@ -32,7 +32,7 @@
                         <h3 class="fw-bold">Selamat Datang Kembali</h3>
                         <p>Silahkan masukkan email & kata sandi</p>
                     </div>
-                    <form method="post" action="<?php echo site_url('authmahasiswa/proses_login');?>">
+                    <form method="post" action="<?php echo site_url('AuthMahasiswa/proses_login');?>">
 
                     <div class="custom-input-group">
                         <img src="<?php echo base_url('aksicendekia/asset/icon/codicon_mail.svg')?>" alt="Email Icon" class="input-icon">
@@ -52,7 +52,7 @@
                     <p class="text-center"><a href="#" class="text-decoration-none">Lupa Password</a></p>
                     <p class="text-center">
                         <span>Belum punya akun?</span>
-                        <a href="<?php echo site_url('authmahasiswa/register');?>" class="fw-bold text-primary link-masuk">Daftar</a>
+                        <a href="<?php echo site_url('AuthMahasiswa/register');?>" class="fw-bold text-primary link-masuk">Daftar</a>
 
                     </p>
                     </form>

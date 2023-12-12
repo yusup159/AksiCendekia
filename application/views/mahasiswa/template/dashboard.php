@@ -77,7 +77,7 @@
                 <div class="card col-lg-4 mb-3">
                     <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a href="./detaildonasi.html" class="link">
+                        <a href="<?php echo site_url('AuthMahasiswa/detail_donasi') ?>" class="link">
                             <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                             <h5 class="card-title">Festival Pentas Seni Akhir Tahun
                                 Universitas Amikom Yogyakarta</h5>
@@ -92,7 +92,7 @@
                 <div class="card col-lg-4 mb-3">
                     <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a href="#" class="link">
+                        <a href="<?php echo site_url('AuthMahasiswa/detail_donasi') ?>" class="link">
                             <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                             <h5 class="card-title">Festival Pentas Seni Akhir Tahun
                                 Universitas Amikom Yogyakarta</h5>
@@ -107,7 +107,7 @@
                 <div class="card col-lg-4 mb-3">
                     <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a href="#" class="link">
+                        <a href="<?php echo site_url('AuthMahasiswa/detail_donasi') ?>" class="link">
                             <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                             <h5 class="card-title">Festival Pentas Seni Akhir Tahun
                                 Universitas Amikom Yogyakarta</h5>
@@ -141,7 +141,7 @@
                 <div class="card col-lg-4 mb-3">
                     <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a href="#" class="link">
+                        <a href="<?php echo site_url('AuthMahasiswa/detail_donasi') ?>" class="link">
                             <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                             <h5 class="card-title">Festival Pentas Seni Akhir Tahun
                                 Universitas Amikom Yogyakarta</h5>
@@ -156,7 +156,7 @@
                 <div class="card col-lg-4 mb-3">
                     <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a href="#" class="link">
+                        <a href="<?php echo site_url('AuthMahasiswa/detail_donasi') ?>" class="link">
                             <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                             <h5 class="card-title">Festival Pentas Seni Akhir Tahun
                                 Universitas Amikom Yogyakarta</h5>
@@ -171,7 +171,7 @@
                 <div class="card col-lg-4 mb-3">
                     <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a href="#" class="link">
+                        <a href="<?php echo site_url('AuthMahasiswa/detail_donasi') ?>" class="link">
                             <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                             <h5 class="card-title">Festival Pentas Seni Akhir Tahun
                                 Universitas Amikom Yogyakarta</h5>

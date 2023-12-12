@@ -12,12 +12,12 @@ class AuthMahasiswa extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('Mahasiswa/login');
+        $this->load->view('mahasiswa/login');
     }
 
     public function register()
     {
-        $this->load->view('Mahasiswa/register');
+        $this->load->view('mahasiswa/register');
     }
 
     public function proses_login()
@@ -27,7 +27,7 @@ class AuthMahasiswa extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             // Jika validasi gagal, kembali ke halaman login
-            $this->load->view('Mahasiswa/login');
+            $this->load->view('mahasiswa/login');
         } else {
             // Ambil data dari formulir login
             $email = $this->input->post('email');
@@ -38,11 +38,11 @@ class AuthMahasiswa extends CI_Controller {
 
             if ($user) {
                 
-                redirect('authmahasiswa/dashboard');
+                redirect('AuthMahasiswa/dashboard');
             } else {
                 
                 $this->session->set_flashdata('error', 'Email atau password salah.');
-                redirect('authmahasiswa/index');
+                redirect('AuthMahasiswa/index');
             }
         }
     }
@@ -72,7 +72,7 @@ class AuthMahasiswa extends CI_Controller {
             $this->AuthModel->register_mahasiswa($data);
 
             // Redirect ke halaman login setelah register berhasil
-            redirect('authmahasiswa/index');
+            redirect('AuthMahasiswa/index');
         }
     }
     public function dashboard(){
@@ -89,5 +89,8 @@ class AuthMahasiswa extends CI_Controller {
     }
     public function histori_penggalangan(){
         $this->load->view('mahasiswa/historipenggalangan');
+    }
+    public function detail_donasi(){
+        $this->load->view('mahasiswa/detaildonasi');
     }
 }

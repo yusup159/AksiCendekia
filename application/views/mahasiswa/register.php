@@ -32,7 +32,7 @@
                         <h3 class="fw-bold">Selamat Datang</h3>
                         <p>Silahkan masukkan asal universitas, NIM, username, email & kata sandi</p>
                     </div>
-                    <form method="post" action="<?php echo site_url('authmahasiswa/proses_register');?>">
+                    <form method="post" action="<?php echo site_url('AuthMahasiswa/proses_register');?>">
                     <div class="custom-input-group">
                         <img src="<?php echo base_url('aksicendekia/asset/icon/kampus.svg')?>" alt="Email Icon" class="input-icon">
                         <input type="text" name="asal_kampus" class="form-control custom-input" placeholder="Asal Kampus">
@@ -62,7 +62,7 @@
                   
                     <p class="text-center">
                         <span>Suda punya akun?</span>
-                        <a href="<?php echo site_url('authmahasiswa/index');?>" class="fw-bold text-primary link-masuk">Masuk</a>
+                        <a href="<?php echo site_url('AuthMahasiswa/index');?>" class="fw-bold text-primary link-masuk">Masuk</a>
                     </p>
                     </form>
                 </div>

@@ -12,11 +12,11 @@ class AuthDonatur extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('Donatur/login');
+        $this->load->view('donatur/login');
     }
     public function halaman_register()
     {
-        $this->load->view('Donatur/register');
+        $this->load->view('donatur/register');
     }
 
     public function register()
@@ -27,7 +27,7 @@ class AuthDonatur extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             // Jika validasi gagal, tampilkan kembali form registrasi
-            $this->load->view('Donatur/register');
+            $this->load->view('donatur/register');
         } else {
             // Jika validasi berhasil, lakukan registrasi
             $data = array(
@@ -37,7 +37,7 @@ class AuthDonatur extends CI_Controller {
             );
 
             $this->AuthModel->register_donatur($data);
-            redirect('authdonatur'); // Redirect ke halaman login setelah registrasi
+            redirect('AuthDonatur'); // Redirect ke halaman login setelah registrasi
         }
     }
 
@@ -58,11 +58,11 @@ class AuthDonatur extends CI_Controller {
 
             if ($user) {
 
-                redirect('authdonatur/dashboard');
+                redirect('AuthDonatur/dashboard');
             } else {
                 // Tampilkan pesan error jika login gagal
                 $this->session->set_flashdata('error', 'Invalid email or password');
-                redirect('authdonatur');
+                redirect('AuthDonatur');
             }
         }
     }
