@@ -73,6 +73,9 @@ class AuthAdmin extends CI_Controller {
 
     
 	public function dashboard(){
+        if (!$this->session->userdata('id')) {
+            redirect('AuthAdmin/index');
+        }
 		$this->load->view('admin/template/header');
 		$this->load->view('admin/template/sidebar');
 		$this->load->view('admin/template/dashboard');
@@ -80,6 +83,9 @@ class AuthAdmin extends CI_Controller {
 
 	}
     public function data_donatur() {
+        if (!$this->session->userdata('id')) {
+            redirect('AuthAdmin/index');
+        }
         $data['donatur'] = $this->AuthModel->getDonaturData();
         $this->load->view('admin/template/header');
 		$this->load->view('admin/template/sidebar');
@@ -87,6 +93,9 @@ class AuthAdmin extends CI_Controller {
         $this->load->view('admin/template/footer');
     }
     public function data_mahasiswa() {
+        if (!$this->session->userdata('id')) {
+            redirect('AuthAdmin/index');
+        }
         $data['mahasiswa'] = $this->AuthModel->getMahasiswaData();
         $this->load->view('admin/template/header');
 		$this->load->view('admin/template/sidebar');

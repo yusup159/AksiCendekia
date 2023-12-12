@@ -26,10 +26,8 @@ class AuthDonatur extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            // Jika validasi gagal, tampilkan kembali form registrasi
             $this->load->view('donatur/register');
         } else {
-            // Jika validasi berhasil, lakukan registrasi
             $data = array(
                 'username' => $this->input->post('username'),
                 'email' => $this->input->post('email'),
@@ -37,7 +35,7 @@ class AuthDonatur extends CI_Controller {
             );
 
             $this->AuthModel->register_donatur($data);
-            redirect('AuthDonatur'); // Redirect ke halaman login setelah registrasi
+            redirect('AuthDonatur'); 
         }
     }
 
@@ -45,37 +43,53 @@ class AuthDonatur extends CI_Controller {
     {
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required');
-
+    
         if ($this->form_validation->run() == FALSE) {
-            // Jika validasi gagal, tampilkan kembali form login
             $this->load->view('Admin/login');
         } else {
-            // Jika validasi berhasil, lakukan login
             $email = $this->input->post('email');
             $password = $this->input->post('password');
-
+    
             $user = $this->AuthModel->login_donatur($email, $password);
-
+    
             if ($user) {
-
+                $userdata = array(
+                    'id' => $user->id,
+                    'email' => $user->email,
+                );
+    
+                $this->session->set_userdata($userdata);
+    
                 redirect('AuthDonatur/dashboard');
             } else {
-                // Tampilkan pesan error jika login gagal
                 $this->session->set_flashdata('error', 'Invalid email or password');
                 redirect('AuthDonatur');
             }
         }
     }
+    
 	public function dashboard(){
+        if (!$this->session->userdata('id')) {
+            redirect('AuthDonatur/index');
+        }
 		$this->load->view('donatur/template/dashboard');
 	}
     public function profil_donatur(){
+        if (!$this->session->userdata('id')) {
+            redirect('AuthDonatur/index');
+        }
         $this->load->view('donatur/profil');
     }
     public function edit_profil_donatur(){
+        if (!$this->session->userdata('id')) {
+            redirect('AuthDonatur/index');
+        }
         $this->load->view('donatur/editprofil');
     }
     public function histori_donasi(){
+        if (!$this->session->userdata('id')) {
+            redirect('AuthDonatur/index');
+        }
         $this->load->view('donatur/historidonasi');
     }
 }
