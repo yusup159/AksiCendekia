@@ -104,7 +104,7 @@
                         <p class="judul">Dana Terkumpul : </p>
                         <p class="kegiatan">Rp. 120.000.000 </p>
                     </div>
-                    <a href="./nominal.html">
+                    <a href="<?php echo site_url('AuthMahasiswa/galangdana')?>">
                         <button class="btn btn-light btn-bayar mt-4">
                             <img src="./asset/icon/arrow.svg" alt="">
                             Lakukan Donasi</button></a>

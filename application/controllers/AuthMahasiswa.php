@@ -93,4 +93,10 @@ class AuthMahasiswa extends CI_Controller {
     public function detail_donasi(){
         $this->load->view('mahasiswa/detaildonasi');
     }
+    public function galangdana(){
+        $this->load->view('mahasiswa/galangdana');
+    }
+    public function pembayaran(){
+        $this->load->view('mahasiswa/pembayaran');
+    }
 }
