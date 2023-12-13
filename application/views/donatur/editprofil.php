@@ -85,6 +85,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>Profil Pengguna</p>
                                     </a>
                                 </li>
+                                <a href="<?php echo site_url('AuthDonatur/profil_donatur')?>" class="nav-link">
+                            <button class="btn-galang">
+                                Batal
+                            </button>
+                        </a>
                             </ul>
                         </li>
                         <!-- <li class="nav-item"> -->

@@ -40,29 +40,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-          </div>
-          <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
-          </div>
-        </div> -->
 
-                <!-- SidebarSearch Form -->
-                <!-- <div class="form-inline">
-          <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-sidebar">
-                <i class="fas fa-search fa-fw"></i>
-              </button>
-            </div>
-          </div>
-        </div> -->
-
-                <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
@@ -110,10 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <h1 class="mt-2 text-bold">Profile Pengguna</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
-                            <!-- <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Starter Page</li>
-              </ol> -->
+ 
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -133,15 +108,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="col">
                                             <div class="row">
                                                 <div class="col">
-                                                <img class="profile mb-3" src="<?php echo base_url('aksicendekia/asset/foto/profile.jpg')?>" alt=""><br>
+                                                <img class="profile mb-3" src="<?php echo ($donatur->foto != null) ? base_url('Asset/foto_donatur/' . $donatur->foto) : base_url('aksicendekia/asset/foto/belum_ada_foto.jpg'); ?>" alt=""><br>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Username</label>
-                                                        <input class="form-control" type="text" name="username"
-                                                            placeholder="Username" value="Adiba Andani">
+                                                        <input class="form-control"  value="<?php echo $donatur->username?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -149,30 +123,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Email</label>
-                                                        <input class="form-control" type="text"
-                                                            value="adibaandani@gmail.com" placeholder="Alamat Email">
+                                                        <input class="form-control" 
+                                                        value="<?php echo $donatur->email?>"> 
                                                     </div>
                                                 </div>
                                             </div>
+                                          
                                             <div class="row">
                                                 <div class="col">
-                                                    <div class="form-group">
-                                                        <label>Asal Universitas</label>
-                                                        <input class="form-control" type="text"
-                                                            placeholder="Asal Universitas" value="UIN Raden Mas Said">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label>Nomor Induk Mahasiswa</label>
-                                                        <input class="form-control" type="text"
-                                                            placeholder="Nomor Induk Mahasiswa" value="21.12.2100">
-                                                    </div>
-                                                    <a href="./editprofilmahasiswa.html">
-                                                        <button class="btn btn-simpan">Edit
-                                                            Data</button>
+                                                   
+                                                    <a class="btn btn-simpan" href="<?php echo site_url('AuthDonatur/edit_profil_donatur')?>">
+                                                        Edit Data
                                                     </a>
                                                 </div>
                                             </div>

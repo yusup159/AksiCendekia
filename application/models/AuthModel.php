@@ -27,7 +27,9 @@ class AuthModel extends CI_Model {
 
         return false;
     }
-
+    public function delete($tabel, $id, $val){
+        $this->db->delete($tabel, array($id => $val));
+    }
 
 
     //MAHASISWA
@@ -64,6 +66,10 @@ class AuthModel extends CI_Model {
         $this->db->where('id', $user_id);
         $this->db->update('mahasiswa', $data);
     }
+    public function getMahasiswaData() {
+        $query = $this->db->get('mahasiswa');
+        return $query->result();
+    }
 
 
 
@@ -91,8 +97,17 @@ class AuthModel extends CI_Model {
         $query = $this->db->get('donatur');
         return $query->result();
     }
-    public function getMahasiswaData() {
-        $query = $this->db->get('mahasiswa');
-        return $query->result();
+    public function get_donatur_by_id($user_id) {
+        $this->db->select('*');
+        $this->db->from('donatur');
+        $this->db->where('id', $user_id);
+        $query = $this->db->get();
+
+        return $query->row(); 
     }
+    public function update_donatur($user_id, $data) {
+        $this->db->where('id', $user_id);
+        $this->db->update('mahasiswa', $data);
+    }
+   
 }

@@ -74,16 +74,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </ul>
                         </li>
                         <!-- <li class="nav-item"> -->
-                        <a href="<?php echo site_url('AuthMahasiswa/galangdana')?>" class="nav-link">
+                        <a href="<?php echo site_url('AuthMahasiswa/profil_mahasiswa')?>" class="nav-link">
                             <button class="btn-galang">
-                                Galang Dana
+                                Batal
                             </button>
-                        </a>
-                        <a href="<?php echo site_url('AuthMahasiswa/logout')?>" class="nav-link">
-                            <button class="btn-galang">
-                                Logout
-                            </button>
-                        </a>
                         <!-- </li> -->
                     </ul>
                 </nav>

@@ -85,7 +85,10 @@ class AuthDonatur extends CI_Controller {
         if (!$this->session->userdata('id')) {
             redirect('AuthDonatur/index');
         }
-        $this->load->view('donatur/profil');
+        $user_id = $this->session->userdata('id');
+        $mahasiswa_data = $this->AuthModel->get_donatur_by_id($user_id);
+        $data['donatur'] = $mahasiswa_data;
+        $this->load->view('donatur/profil', $data);
     }
     public function edit_profil_donatur(){
         if (!$this->session->userdata('id')) {

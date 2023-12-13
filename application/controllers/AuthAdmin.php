@@ -102,4 +102,20 @@ class AuthAdmin extends CI_Controller {
         $this->load->view('admin/datamahasiswa', $data);
         $this->load->view('admin/template/footer');
     }
+    public function delete_donatur($id){
+        if (!$this->session->userdata('id')) {
+            redirect('AuthAdmin/index');
+        }
+        $this->AuthModel->delete('donatur', 'id',$id);
+        redirect('AuthAdmin/data_donatur');
+        
+    }
+    public function delete_mahasiswa($id){
+        if (!$this->session->userdata('id')) {
+            redirect('AuthAdmin/index');
+        }
+        $this->AuthModel->delete('mahasiswa', 'id',$id);
+        redirect('AuthAdmin/data_mahasiswa');
+        
+    }
 }
