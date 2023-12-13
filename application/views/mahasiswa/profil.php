@@ -40,34 +40,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-          </div>
-          <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
-          </div>
-        </div> -->
-
-                <!-- SidebarSearch Form -->
-                <!-- <div class="form-inline">
-          <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-sidebar">
-                <i class="fas fa-search fa-fw"></i>
-              </button>
-            </div>
-          </div>
-        </div> -->
-
-                <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open active">
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -91,9 +66,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </ul>
                         </li>
                         <!-- <li class="nav-item"> -->
-                        <a href="#" class="nav-link">
+                        <a href="<?php echo site_url('AuthMahasiswa/galangdana')?>" class="nav-link">
                             <button class="btn-galang">
                                 Galang Dana
+                            </button>
+                        </a>
+                        <a href="<?php echo site_url('AuthMahasiswa/logout')?>" class="nav-link">
+                            <button class="btn-galang">
+                                Logout
                             </button>
                         </a>
                         <!-- </li> -->
@@ -114,10 +94,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <h1 class="mt-2 text-bold">Profile Pengguna</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
-                            <!-- <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Starter Page</li>
-              </ol> -->
+          
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -128,7 +105,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="content">
                 <div class="container">
                     <div class=" row">
-                        <!-- /.col-md-6 -->
                         <div class="col-lg">
                             <div class="donasi">
                                 <div class="row"></div>
@@ -137,15 +113,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="col">
                                             <div class="row">
                                                 <div class="col">
-                                                    <img class="profile mb-3" src="<?php echo base_url('aksicendekia/asset/foto/profile.jpg')?>" alt=""><br>
+                                                <img class="profile mb-3" src="<?php echo ($mahasiswa->foto != null) ? base_url('Asset/foto_mahasiswa/' . $mahasiswa->foto) : base_url('aksicendekia/asset/foto/belum_ada_foto.jpg'); ?>" alt="">
+
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Username</label>
-                                                        <input class="form-control" type="text" name="username"
-                                                            placeholder="Username" value="Adiba Andani">
+                                                        <p class="form-control"><?php echo $mahasiswa->username; ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,8 +129,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Email</label>
-                                                        <input class="form-control" type="text"
-                                                            value="adibaandani@gmail.com" placeholder="Alamat Email">
+                                                        <p class="form-control"><?php echo $mahasiswa->email; ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,8 +137,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Asal Universitas</label>
-                                                        <input class="form-control" type="text"
-                                                            placeholder="Asal Universitas" value="UIN Raden Mas Said">
+                                                        <p class="form-control"><?php echo $mahasiswa->asal_kampus; ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -171,8 +145,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Nomor Induk Mahasiswa</label>
-                                                        <input class="form-control" type="text"
-                                                            placeholder="Nomor Induk Mahasiswa" value="21.12.2100">
+                                                        <p class="form-control"><?php echo $mahasiswa->nim; ?></p>
                                                     </div>
                                                    
                                                         <a class="btn btn-simpan" href="<?php echo site_url('AuthMahasiswa/edit_profil_mahasiswa')?>">Edit
@@ -185,12 +158,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </form>
                             </div>
                         </div>
-                        <!-- /.col-md-6 -->
                     </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
+                </div>
             </div>
-            <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
 
@@ -202,17 +172,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <p>Sidebar content</p>
             </div>
         </aside>
-        <!-- /.control-sidebar -->
 
-        <!-- Main Footer -->
-        <!-- <footer class="main-footer"> -->
-        <!-- To the right -->
-        <!-- <div class="float-right d-none d-sm-inline">
-        Anything you want
-      </div> -->
-        <!-- Default to the left -->
-        <!-- <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-    </footer> -->
     </div>
     <!-- ./wrapper -->
 

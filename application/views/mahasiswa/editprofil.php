@@ -18,7 +18,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url('aksicendekia/fontawesome-free/css/all.min.css')?>">
     <!-- My Style -->
-    <link rel="stylesheet" href="<?php echo base_url('aksicendekia/css/profilmahasiswa.css"')?>>
+    <link rel="stylesheet" href="<?php echo base_url('aksicendekia/css/profilmahasiswa.css')?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iKu1r+r8hHxT8ZNTEGN1l8IwQ/YYN/eIQfVAEmD2j/Ht8v5qDkLXssjfs" crossorigin="anonymous">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -42,27 +43,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-          </div>
-          <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
-          </div>
-        </div> -->
 
-                <!-- SidebarSearch Form -->
-                <!-- <div class="form-inline">
-          <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-sidebar">
-                <i class="fas fa-search fa-fw"></i>
-              </button>
-            </div>
-          </div>
-        </div> -->
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
@@ -93,9 +74,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </ul>
                         </li>
                         <!-- <li class="nav-item"> -->
-                        <a href="#" class="nav-link">
+                        <a href="<?php echo site_url('AuthMahasiswa/galangdana')?>" class="nav-link">
                             <button class="btn-galang">
                                 Galang Dana
+                            </button>
+                        </a>
+                        <a href="<?php echo site_url('AuthMahasiswa/logout')?>" class="nav-link">
+                            <button class="btn-galang">
+                                Logout
                             </button>
                         </a>
                         <!-- </li> -->
@@ -116,10 +102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <h1 class="mt-2 text-bold">Profile Pengguna</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
-                            <!-- <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Starter Page</li>
-              </ol> -->
+
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -134,21 +117,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg">
                             <div class="donasi">
                                 <div class="row"></div>
-                                <form class="form" novalidate="">
+                                <form class="form" method="post" action="#">
                                     <div class="row">
                                         <div class="col">
                                             <div class="row">
                                                 <div class="col">
-                                                    <img class="profile mb-3" src="<?php echo base_url('aksicendekia/asset/foto/profile.jpg')?>" alt=""><br>
-                                                    <input type="file" class="sellect-photo mb-4" name="" id="">
+                                                    <img class="profile mb-3" src="<?php echo ($mahasiswa->foto != null) ? base_url('Asset/foto_mahasiswa/' . $mahasiswa->foto) : base_url('aksicendekia/asset/foto/belum_ada_foto.jpg'); ?>" alt="">
+                                                    <br>
+                                                    <input type="file" class="sellect-photo mb-4" name="foto">
                                                 </div>
+                                                <?php
+                                                if ($this->session->flashdata('error')) {
+                                                    echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
+                                                }
+                                                ?>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Username</label>
                                                         <input class="form-control" type="text" name="username"
-                                                            placeholder="Username" value="Adiba Andani">
+                                                            placeholder="Username" value="<?php echo    ($mahasiswa->username != null) ? trim($mahasiswa->username) : ''; ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -157,7 +146,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <div class="form-group">
                                                         <label>Email</label>
                                                         <input class="form-control" type="text"
-                                                            value="adibaandani@gmail.com" placeholder="Alamat Email">
+                                                            value="<?php echo ($mahasiswa->email != null) ? trim($mahasiswa->email) : ''; ?>" placeholder="Alamat Email">
                                                     </div>
                                                 </div>
                                             </div>
@@ -166,7 +155,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <div class="form-group">
                                                         <label>Asal Universitas</label>
                                                         <input class="form-control" type="text"
-                                                            placeholder="Asal Universitas" value="UIN Raden Mas Said">
+                                                            placeholder="Asal Universitas" value="<?php echo ($mahasiswa->asal_kampus != null) ? trim($mahasiswa->asal_kampus) : ''; ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -175,7 +164,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <div class="form-group">
                                                         <label>Nomor Induk Mahasiswa</label>
                                                         <input class="form-control" type="text"
-                                                            placeholder="Nomor Induk Mahasiswa" value="21.12.2100">
+                                                            placeholder="Nomor Induk Mahasiswa" value="<?php echo ($mahasiswa->nim != null) ? trim($mahasiswa->nim) : ''; ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -187,35 +176,58 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Password Saat Ini</label>
-                                                        <input class="form-control" type="password" value="wadawwadaw"
-                                                            placeholder="••••••">
+                                                        <div class="input-group">
+                                                            <input class="form-control" type="password" name="password" id="password_saat_ini1">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text" id="eye-icon1">
+                                                                    <i class="fas fa-eye" id="toggle-password1"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            
+                                            <!-- Form input kedua -->
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Password Baru</label>
-                                                        <input class="form-control" type="password"
-                                                            placeholder="••••••">
+                                                        <div class="input-group">
+                                                            <input class="form-control" type="password" name="password_baru" id="password_saat_ini2">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text" id="eye-icon2">
+                                                                    <i class="fas fa-eye" id="toggle-password2"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            
+                                            <!-- Form input ketiga -->
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label>Konfirmasi Password Baru<span
-                                                                class="d-none d-xl-inline">Password</span></label>
-                                                        <input class="form-control" type="password"
-                                                            placeholder="••••••"></div>
+                                                        <label>Konfirmasi Password Baru</label>
+                                                        <div class="input-group">
+                                                            <input class="form-control" type="password" name="konfirmasi_password_baru" id="password_saat_ini3">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text" id="eye-icon3">
+                                                                    <i class="fas fa-eye" id="toggle-password3"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col d-flex mb-3">
-                                            <a class="btn btn-simpan" href="<?php echo site_url('AuthMahasiswa/profil_mahasiswa')?>">Simpan Perubahan</a>
+                                                <button class="btn btn-simpan" type="submit">Simpan Perubahan</button>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
+                                            
                             </div>
                         </div>
                         <!-- /.col-md-6 -->
@@ -235,17 +247,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <p>Sidebar content</p>
             </div>
         </aside>
-        <!-- /.control-sidebar -->
 
-        <!-- Main Footer -->
-        <!-- <footer class="main-footer"> -->
-        <!-- To the right -->
-        <!-- <div class="float-right d-none d-sm-inline">
-        Anything you want
-      </div> -->
-        <!-- Default to the left -->
-        <!-- <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-    </footer> -->
     </div>
     <!-- ./wrapper -->
 
@@ -257,6 +259,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="./js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="./js/adminlte.min.js"></script>
+
+    <script>
+    function togglePassword(inputId, toggleId) {
+        const passwordInput = document.getElementById(inputId);
+        const togglePassword = document.getElementById(toggleId);
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            // Toggle ikon mata terbuka/tutup
+            togglePassword.classList.toggle('fa-eye-slash');
+        });
+    }
+
+    // Panggil fungsi togglePassword untuk setiap form input
+    togglePassword('password_saat_ini1', 'toggle-password1');
+    togglePassword('password_saat_ini2', 'toggle-password2');
+    togglePassword('password_saat_ini3', 'toggle-password3');
+    </script>
+
 </body>
 
 </html>

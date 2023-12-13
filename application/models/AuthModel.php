@@ -5,6 +5,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AuthModel extends CI_Model {
 
+
+    //ADMIN
+
     public function register_user($data)
     {
         $this->db->insert('alluser', $data);
@@ -24,6 +27,12 @@ class AuthModel extends CI_Model {
 
         return false;
     }
+
+
+
+    //MAHASISWA
+
+
     public function register_mahasiswa($data)
     {
         $this->db->insert('mahasiswa', $data);
@@ -43,6 +52,23 @@ class AuthModel extends CI_Model {
 
         return false;
     }
+    public function get_mahasiswa_by_id($user_id) {
+        $this->db->select('*');
+        $this->db->from('mahasiswa');
+        $this->db->where('id', $user_id);
+        $query = $this->db->get();
+
+        return $query->row(); 
+    }
+    public function update_mahasiswa($user_id, $data) {
+        $this->db->where('id', $user_id);
+        $this->db->update('mahasiswa', $data);
+    }
+
+
+
+
+    //DONATUR
     public function register_donatur($data)
     {
         $this->db->insert('donatur', $data);

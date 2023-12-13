@@ -93,9 +93,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </ul>
                         </li>
                         <!-- <li class="nav-item"> -->
-                        <a href="#" class="nav-link">
+                        <a href="<?php echo site_url('AuthMahasiswa/galangdana')?>" class="nav-link">
                             <button class="btn-galang">
                                 Galang Dana
+                            </button>
+                        </a>
+                        <a href="<?php echo site_url('AuthMahasiswa/logout')?>" class="nav-link">
+                            <button class="btn-galang">
+                                Logout
                             </button>
                         </a>
                         <!-- </li> -->
