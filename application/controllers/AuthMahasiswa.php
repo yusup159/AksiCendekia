@@ -226,4 +226,16 @@ class AuthMahasiswa extends CI_Controller {
         }
         $this->load->view('mahasiswa/pembayaran');
     }
+    public function penggalangan(){
+        if (!$this->session->userdata('id')) {
+            redirect('AuthMahasiswa/index');
+        }
+        $this->load->view('mahasiswa/penggalangan');
+    }
+    public function ajukanpenggalangan(){
+        if (!$this->session->userdata('id')) {
+            redirect('AuthMahasiswa/index');
+        }
+        $this->load->view('mahasiswa/ajukanpenggalangan');
+    }
 }

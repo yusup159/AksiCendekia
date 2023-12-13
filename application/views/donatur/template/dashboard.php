@@ -77,7 +77,7 @@
                 <div class="card col-lg-4 mb-3">
                     <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a href="./detaildonasi.html" class="link">
+                        <a href="<?= site_url('AuthDonatur/detail_donasi')?>" class="link">
                             <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                             <h5 class="card-title">Festival Pentas Seni Akhir Tahun
                                 Universitas Amikom Yogyakarta</h5>
@@ -89,36 +89,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card col-lg-4 mb-3">
-                    <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <a href="#" class="link">
-                            <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
-                            <h5 class="card-title">Festival Pentas Seni Akhir Tahun
-                                Universitas Amikom Yogyakarta</h5>
-                            <p class="nominal"><span>Rp. 130.000.000 </span> Dana Terkumpul</p>
-                        </a>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-lg-4 mb-3">
-                    <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <a href="#" class="link">
-                            <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
-                            <h5 class="card-title">Festival Pentas Seni Akhir Tahun
-                                Universitas Amikom Yogyakarta</h5>
-                            <p class="nominal"><span>Rp. 130.000.000 </span> Dana Terkumpul</p>
-                        </a>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -141,7 +112,7 @@
                 <div class="card col-lg-4 mb-3">
                     <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a href="#" class="link">
+                        <a href="<?= site_url('AuthDonatur/detail_donasi')?>" class="link">
                             <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                             <h5 class="card-title">Festival Pentas Seni Akhir Tahun
                                 Universitas Amikom Yogyakarta</h5>
@@ -153,36 +124,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card col-lg-4 mb-3">
-                    <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <a href="#" class="link">
-                            <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
-                            <h5 class="card-title">Festival Pentas Seni Akhir Tahun
-                                Universitas Amikom Yogyakarta</h5>
-                            <p class="nominal"><span>Rp. 130.000.000 </span> Dana Terkumpul</p>
-                        </a>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-lg-4 mb-3">
-                    <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <a href="#" class="link">
-                            <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
-                            <h5 class="card-title">Festival Pentas Seni Akhir Tahun
-                                Universitas Amikom Yogyakarta</h5>
-                            <p class="nominal"><span>Rp. 130.000.000 </span> Dana Terkumpul</p>
-                        </a>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>

@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
+
 <html lang="en">
 
 <head>
@@ -18,11 +15,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url('aksicendekia/fontawesome-free/css/all.min.css')?>">
     <!-- My Style -->
-    <link rel="stylesheet" href="<?php echo base_url('aksicendekia/css/profilmahasiswa.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('aksicendekia/css/penggalangan.css')?>">
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
+
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <ul class="navbar-nav p-4">
@@ -35,14 +33,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Brand Logo -->
             <a href="<?php echo site_url('AuthMahasiswa/dashboard')?>" class="brand-link">
                 <img src="<?php echo base_url('aksicendekia/asset/foto/aksilogo.png')?>" class="ml-2" alt="">
-                
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
+           
+
+                <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open active">
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -66,14 +68,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </ul>
                         </li>
                         <!-- <li class="nav-item"> -->
-                        <a href="<?php echo site_url('AuthMahasiswa/penggalangan')?>" class="nav-link">
+                        <a href="<?php echo site_url('AuthMahasiswa/profil_mahasiswa')?>" class="nav-link">
                             <button class="btn-galang">
-                                Galang Dana
-                            </button>
-                        </a>
-                        <a href="<?php echo site_url('AuthMahasiswa/logout')?>" class="nav-link">
-                            <button class="btn-galang">
-                                Logout
+                                Kembali
                             </button>
                         </a>
                         <!-- </li> -->
@@ -91,10 +88,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="mt-2 text-bold">Profile Pengguna</h1>
+                            <h1 class="mt-2 text-bold"></h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
-          
+                            <!-- <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Starter Page</li>
+              </ol> -->
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -105,62 +105,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="content">
                 <div class="container">
                     <div class=" row">
+                        <!-- /.col-md-6 -->
                         <div class="col-lg">
-                            <div class="donasi">
-                                <div class="row"></div>
-                                <form class="form" novalidate="">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="row">
-                                                <div class="col">
-                                                <img class="profile mb-3" src="<?php echo ($mahasiswa->foto != null) ? base_url('Asset/foto_mahasiswa/' . $mahasiswa->foto) : base_url('aksicendekia/asset/foto/belum_ada_foto.jpg'); ?>" alt="">
+                            <div class="banner-galang">
 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label>Username</label>
-                                                        <p class="form-control"><?php echo $mahasiswa->username; ?></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label>Email</label>
-                                                        <p class="form-control"><?php echo $mahasiswa->email; ?></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label>Asal Universitas</label>
-                                                        <p class="form-control"><?php echo $mahasiswa->asal_kampus; ?></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label>Nomor Induk Mahasiswa</label>
-                                                        <p class="form-control"><?php echo $mahasiswa->nim; ?></p>
-                                                    </div>
-                                                   
-                                                        <a class="btn btn-simpan" href="<?php echo site_url('AuthMahasiswa/edit_profil_mahasiswa')?>">Edit
-                                                            Data</a>
-                                                 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
+                            <h3 class="text-bold mt-4">Mekanisme Penggalangan Dana</h3>
+                            <p class="mt-4">Halo Kawan Cendekia, selamat datang. Dalam rangka untuk menjaga transparansi
+                                kegiatan
+                                penggalangan dana, dan mengetahui seluruh rencana kegiatan penggalangan dana. Kami
+                                selaku tim Aksi Cendekia, akan meninjau ulang kegiatan penggalangan yang akan Kawan
+                                Cendekia adakan. Dengan alur sebagai berikut :</p>
+                            <p>1. Kawan Cendekia mendownload dan mengisi dokumen berikut <a href="#">Dokumen
+                                    Penggalangan</a></p>
+                            <p>2. Kawan Cendekia mengupload <a href="#">Dokumen Penggalangan</a> dan memberikan bukti
+                                foto rencana kegiatan.</p>
+                            <p>3. Kawan Cendekia menunggu konfirmasi kegiatan penggalangan dari tim Aksi Cendekia</p>
+                            <a href="<?= site_url('AuthMahasiswa/ajukanpenggalangan')?>">
+                                <button class="btn-penggalagan mb-5">
+                                    Lakukan Penggalangan
+                                </button>
+                            </a>
                         </div>
+                        <!-- /.col-md-6 -->
                     </div>
-                </div>
+                    <!-- /.row -->
+                </div><!-- /.container-fluid -->
             </div>
+            <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
 
@@ -172,7 +144,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <p>Sidebar content</p>
             </div>
         </aside>
+        <!-- /.control-sidebar -->
 
+        <!-- Main Footer -->
+        <!-- <footer class="main-footer"> -->
+        <!-- To the right -->
+        <!-- <div class="float-right d-none d-sm-inline">
+        Anything you want
+      </div> -->
+        <!-- Default to the left -->
+        <!-- <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    </footer> -->
     </div>
     <!-- ./wrapper -->
 

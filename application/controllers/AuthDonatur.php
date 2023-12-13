@@ -74,6 +74,13 @@ class AuthDonatur extends CI_Controller {
         }
 		$this->load->view('donatur/template/dashboard');
 	}
+    public function logout()
+    {
+        $this->session->sess_destroy();
+
+        redirect('AuthDonatur/index');
+    }
+
     public function profil_donatur(){
         if (!$this->session->userdata('id')) {
             redirect('AuthDonatur/index');
@@ -91,5 +98,25 @@ class AuthDonatur extends CI_Controller {
             redirect('AuthDonatur/index');
         }
         $this->load->view('donatur/historidonasi');
+    }
+    public function detail_donasi(){
+        if (!$this->session->userdata('id')) {
+            redirect('AuthDonatur/index');
+        }
+        $this->load->view('donatur/detaildonasi');
+    }
+
+
+    public function galangdana(){
+        if (!$this->session->userdata('id')) {
+            redirect('AuthDonatur/index');
+        }
+        $this->load->view('donatur/galangdana');
+    }
+    public function pembayaran(){
+        if (!$this->session->userdata('id')) {
+            redirect('AuthDonatur/index');
+        }
+        $this->load->view('donatur/pembayaran');
     }
 }

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
 <html lang="en">
 
 <head>
@@ -11,11 +14,11 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="./css/adminlte.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('aksicendekia/css/adminlte.min.css')?>">
     <!-- Theme style -->
-    <link rel="stylesheet" href="./fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('aksicendekia/fontawesome-free/css/all.min.css')?>">
     <!-- My Style -->
-    <link rel="stylesheet" href="./css/penggalangan.css">
+    <link rel="stylesheet" href="<?php echo base_url('aksicendekia/css/ajukanpenggalangan.css')?>">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -32,13 +35,13 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="./mainpage.html" class="brand-link">
-                <img src="./asset/foto/aksilogo.png" class="ml-2" alt="">
+                <img src="<?php echo base_url('aksicendekia/asset/foto/aksilogo.png')?>" class="ml-2" alt="">
                 <span class="brand-text font-weight-light">.</span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
-           
+      
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
@@ -47,31 +50,31 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open active">
-                            <ul class="nav nav-treeview">
+                        <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./historypenggalangan.html" class="nav-link">
-                                        <img src="./asset/icon/docs.svg" alt="">
+                                    <a href="<?php echo site_url('AuthMahasiswa/histori_penggalangan')?>" class="nav-link">
+                                        <img src="<?php echo base_url('aksicendekia/asset/icon/docs.svg')?>" alt="">
                                         <p>Histori Penggalangan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <img src="./asset/icon/docs.svg" alt="">
+                                    <a href="<?php echo site_url('AuthMahasiswa/histori_donasi')?>" class="nav-link">
+                                        <img src="<?php echo base_url('aksicendekia/asset/icon/docs.svg')?>" alt="">
                                         <p>Histori Donasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./profilmahasiswa.html" class="nav-link">
-                                        <img src="./asset/icon/orang.svg" alt="">
+                                    <a href="<?php echo site_url('AuthMahasiswa/profil_mahasiswa')?>" class="nav-link">
+                                        <img src="<?php echo base_url('aksicendekia/asset/icon/orang.svg')?>" alt="">
                                         <p>Profil Pengguna</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <!-- <li class="nav-item"> -->
-                        <a href="#" class="nav-link">
+                        <a href="<?php echo site_url('AuthMahasiswa/penggalangan')?>" class="nav-link">
                             <button class="btn-galang">
-                                Galang Dana
+                                Batal
                             </button>
                         </a>
                         <!-- </li> -->
@@ -108,65 +111,56 @@
                     <div class=" row">
                         <!-- /.col-md-6 -->
                         <div class="col-lg">
+                            <form action="<?php echo site_url('AuthMahasiswa/inputpengajuan')?>" method="post">
                             <div class="banner-galang">
-
                             </div>
-                            <h3 class="text-bold mt-4">Mekanisme Penggalangan Dana</h3>
-                            <p class="mt-4">Halo Kawan Cendekia, selamat datang. Dalam rangka untuk menjaga transparansi
-                                kegiatan
-                                penggalangan dana, dan mengetahui seluruh rencana kegiatan penggalangan dana. Kami
-                                selaku tim Aksi Cendekia, akan meninjau ulang kegiatan penggalangan yang akan Kawan
-                                Cendekia adakan. Dengan alur sebagai berikut :</p>
-                            <p>1. Kawan Cendekia mendownload dan mengisi dokumen berikut <a href="#">Dokumen
-                                    Penggalangan</a></p>
-                            <p>2. Kawan Cendekia mengupload <a href="#">Dokumen Penggalangan</a> dan memberikan bukti
-                                foto rencana kegiatan.</p>
-                            <p>3. Kawan Cendekia menunggu konfirmasi kegiatan penggalangan dari tim Aksi Cendekia</p>
-                            <a href="./ajukanpenggalangan.html">
-                                <button class="btn-penggalagan mb-5">
+                            <div>
+                                <label for="formFile" class="form-label">Dokumen Penggalangan</label>
+                                <input class="form-control" type="file" id="formFile" name="dokumen">
+                            </div>
+                            <div>
+                                <label for="formFile" class="form-label">Thumbnail Kegiatan 1</label>
+                                <input class="form-control" type="file" id="formFile" name="foto1">
+                            </div>
+                            <div>
+                                <label for="formFile" class="form-label">Thumbnail Kegiatan 2</label>
+                                <input class="form-control" type="file" id="formFile" name="foto2">
+                            </div>
+                            <div>
+                                <label for="formFile" class="form-label">Thumbnail Kegiatan 3</label>
+                                <input class="form-control" type="file" id="formFile" name="foto3">
+                            </div>
+                            <p>*Agar tampilan terlihat lebih menarik, disarankan menggunakan ukuran 400 * 600 </p>
+
+                                <button class="btn-penggalagan mb-5" type="submit">
                                     Lakukan Penggalangan
                                 </button>
-                            </a>
+                            <!-- /.col-md-6 -->
+                            </form>
                         </div>
-                        <!-- /.col-md-6 -->
-                    </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
+                        <!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.content -->
             </div>
-            <!-- /.content -->
+            <!-- /.content-wrapper -->
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+                <div class="p-3">
+                    <h5>Title</h5>
+                    <p>Sidebar content</p>
+                </div>
+            </aside>
+
         </div>
-        <!-- /.content-wrapper -->
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
-        <!-- /.control-sidebar -->
-
-        <!-- Main Footer -->
-        <!-- <footer class="main-footer"> -->
-        <!-- To the right -->
-        <!-- <div class="float-right d-none d-sm-inline">
-        Anything you want
-      </div> -->
-        <!-- Default to the left -->
-        <!-- <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-    </footer> -->
-    </div>
-    <!-- ./wrapper -->
-
-    <!-- REQUIRED SCRIPTS -->
-
-    <!-- jQuery -->
-    <script src="./js/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="./js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="./js/adminlte.min.js"></script>
+        <script src="./js/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="./js/bootstrap.bundle.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="./js/adminlte.min.js"></script>
 </body>
 
 </html>

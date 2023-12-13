@@ -86,6 +86,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
             </ul>
             </li>
+            <a href="<?php echo site_url('AuthDonatur/logout')?>" class="nav-link">
+                            <button class="btn-galang">
+                                Logout
+                            </button>
+                        </a>
            
             <!-- </li> -->
           </ul>
