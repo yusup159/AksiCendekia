@@ -6,15 +6,21 @@
         <tr>
             <th class="text-center" >NO</th>
             <th class="text-center" >Nama Kegiatan</th>
+            <th class="text-center" >Deskripsi Kegiatan</th>
+            <th class="text-center" >UKM</th>
+            <th class="text-center" >Donasi </th>
             <th class="text-center" >Tanggal Kegiatan</th>
             <th class="text-center" >Dokumen Pengajuan</th>
             <th class="text-center" >Status Pengajuan</th>
-            <th  colspan="3" class="text-center">AKSI</th>
+            <th  colspan="3" class="text-center" >AKSI</th>
         </tr>
         <?php $no=1; foreach($pengajuan as $row){ ?>
             <tr>
                 <td><?php echo $no ?></td>
                 <td><?php echo $row->nama_kegiatan; ?></td>
+                <td><?php echo $row->deskripsi; ?></td>
+                <td><?php echo $row->UKM; ?></td>
+                <td align="right">Rp. <?php echo number_format($row->Donasi, 0, ',', '.'); ?></td>
                 <?php 
                                     $originalDate = $row->tanggal; 
                                     $formattedDate = date("d F Y", strtotime($originalDate));

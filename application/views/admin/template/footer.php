@@ -41,6 +41,72 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url('Asset/build/js/custom.min.js')?>"></script>
-	
+	<!-- Posisikan script ini di bawah jQuery -->
+    <script>
+    $(document).ready(function () {
+        // Ketika opsi judul dipilih
+        $('select[name="judul"]').change(function () {
+            // Ambil nilai judul yang dipilih
+            var selectedJudul = $(this).val();
+
+            // Ambil data dari array pengajuan sesuai dengan judul yang dipilih
+            var selectedData = <?php echo json_encode($pengajuan); ?>.find(item => item.nama_kegiatan === selectedJudul);
+
+            // Isi formulir sesuai dengan data yang diambil
+            $('select[name="deskripsi"]').val(selectedData.deskripsi);
+            $('select[name="ukm"]').val(selectedData.UKM);
+            $('select[name="danadonasi"]').val(selectedData.Donasi);
+            $('select[name="id_pengajuan"]').val(selectedData.id);
+        });
+
+        // Ketika opsi deskripsi dipilih
+        $('select[name="deskripsi"]').change(function () {
+            // Ambil nilai deskripsi yang dipilih
+            var selectedDeskripsi = $(this).val();
+
+            // Ambil data dari array pengajuan sesuai dengan deskripsi yang dipilih
+            var selectedData = <?php echo json_encode($pengajuan); ?>.find(item => item.deskripsi === selectedDeskripsi);
+
+            // Isi formulir sesuai dengan data yang diambil
+            $('select[name="judul"]').val(selectedData.nama_kegiatan);
+            $('select[name="ukm"]').val(selectedData.UKM);
+            $('select[name="danadonasi"]').val(selectedData.Donasi);
+            $('select[name="id_pengajuan"]').val(selectedData.id);
+        });
+
+        // Ketika opsi UKM dipilih
+        $('select[name="ukm"]').change(function () {
+            // Ambil nilai UKM yang dipilih
+            var selectedUKM = $(this).val();
+
+            // Ambil data dari array pengajuan sesuai dengan UKM yang dipilih
+            var selectedData = <?php echo json_encode($pengajuan); ?>.find(item => item.UKM === selectedUKM);
+
+            // Isi formulir sesuai dengan data yang diambil
+            $('select[name="judul"]').val(selectedData.nama_kegiatan);
+            $('select[name="deskripsi"]').val(selectedData.deskripsi);
+            $('select[name="danadonasi"]').val(selectedData.Donasi);
+            $('select[name="id_pengajuan"]').val(selectedData.id);
+        });
+
+        // Ketika opsi danadonasi dipilih
+        $('select[name="danadonasi"]').change(function () {
+            // Ambil nilai danadonasi yang dipilih
+            var selectedDanaDonasi = $(this).val();
+
+            // Ambil data dari array pengajuan sesuai dengan danadonasi yang dipilih
+            var selectedData = <?php echo json_encode($pengajuan); ?>.find(item => item.Donasi === selectedDanaDonasi);
+
+            // Isi formulir sesuai dengan data yang diambil
+            $('select[name="judul"]').val(selectedData.nama_kegiatan);
+            $('select[name="deskripsi"]').val(selectedData.deskripsi);
+            $('select[name="ukm"]').val(selectedData.UKM);
+            $('select[name="id_pengajuan"]').val(selectedData.id);
+        });
+    });
+</script>
+
+
+
   </body>
 </html>

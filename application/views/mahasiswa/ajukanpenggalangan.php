@@ -119,7 +119,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <input class="form-control" type="text" id="formFile" name="namakegiatan" >
                             </div>
                             <div>
-                                <label for="formFile" class="form-label">Tanggal Pengajuan</label>
+                                <label for="formFile" class="form-label">Deskripsi Kegiatan</label>
+                                <input class="form-control" type="text" id="formFile" name="deskripsi" >
+                            </div>
+                            <div>
+                                <label for="formFile" class="form-label">Nama UKM</label>
+                                <input class="form-control" type="text" id="formFile" name="ukm" >
+                            </div>
+                            <div>
+                                <label for="formFile" class="form-label">Donasi Dibutuhkan</label>
+                                <input class="form-control" type="number" id="formFile" name="donasi" min="0" >
+                            </div>
+                            <div>
+                                <label for="formFile" class="form-label">Tanggal Kegiatan</label>
                                 <input class="form-control" type="date" id="formFile" name="tanggal">
                             </div>
                             <div>

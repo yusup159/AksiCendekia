@@ -164,4 +164,43 @@ class AuthAdmin extends CI_Controller {
         $this->AuthModel->deletePengajuan($id); 
         redirect('AuthAdmin/data_pengajuan'); 
     }
+    public function data_penggalangan() {
+        if (!$this->session->userdata('id')) {
+            redirect('AuthAdmin/index');
+        }
+    
+        $data['pengajuan'] = $this->AuthModel->getPengajuanBelumTerdaftar();
+        $data['penggalangan'] = $this->AuthModel->getPenggalanganData();
+    
+        $this->load->view('admin/template/header');
+        $this->load->view('admin/template/sidebar');
+        $this->load->view('admin/datapenggalangan', $data);
+        $this->load->view('admin/template/footer');
+    }
+    public function input_penggalangan() {
+        // Ambil data dari form
+        $data = array(
+            'judul' => $this->input->post('judul'),
+            'deskripsi' => $this->input->post('deskripsi'),
+            'donasi' => $this->input->post('danadonasi'),
+            'UKM' => $this->input->post('ukm'),
+            'id_pengajuan' => $this->input->post('id_pengajuan')
+  
+        );
+
+        // Panggil method model untuk menyimpan data
+        $this->AuthModel->tambahDataPenggalangan($data);
+
+        // Redirect ke halaman tertentu setelah input data berhasil
+        redirect('halaman_sukses');
+    }
+    public function delete_penggalangan($id) {
+        if (!$this->session->userdata('id')) {
+            redirect('AuthAdmin/index');
+        }
+    
+        $this->AuthModel->deletePenggalangan($id);
+        redirect('AuthAdmin/data_penggalangan');
+    }
+    
 }

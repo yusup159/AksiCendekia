@@ -240,6 +240,9 @@ class AuthMahasiswa extends CI_Controller {
     }
     public function inputpengajuan() {
         $data['nama_kegiatan'] = $this->input->post('namakegiatan');
+        $data['deskripsi'] = $this->input->post('deskripsi');
+        $data['UKM'] = $this->input->post('ukm');
+        $data['Donasi'] = $this->input->post('donasi');
         $data['tanggal'] = $this->input->post('tanggal');
     
         $config['upload_path'] = './dokumen_pengajuan/';

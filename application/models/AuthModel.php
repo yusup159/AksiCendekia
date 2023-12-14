@@ -137,4 +137,43 @@ class AuthModel extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete('pengajuan');
     }
+
+    public function getPengajuanBelumTerdaftar() {
+        $this->db->select('pengajuan.*');
+        $this->db->from('pengajuan');
+        $this->db->join('penggalangan_dana', 'pengajuan.id = penggalangan_dana.id_pengajuan', 'left');
+        $this->db->where('penggalangan_dana.id_pengajuan IS NULL', null, false);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
+    
+
+
+    //Penggalangan
+    public function inputPenggalangan($data) {
+        $this->db->insert('penggalangan_dana', $data); 
+    }
+    public function getPengajuanByIdPengajuan($id_mahasiswa) {
+        $this->db->where('id_mahasiswa', $id_mahasiswa);
+        $query = $this->db->get('penggalangan_dana');
+        return $query->result();
+    }
+    public function getPenggalanganData() {
+        $query = $this->db->get('penggalangan_dana');
+        return $query->result();
+    }
+    public function getPenggalanganById($id) {
+        $this->db->where('id', $id);
+        $query = $this->db->get('penggalangan_dana');
+        return $query->row(); 
+    }
+    public function deletePenggalangan($id) {
+        $this->db->where('id', $id);
+        $this->db->delete('penggalangan_dana');
+    }
+    
+    public function tambahDataPenggalangan($data) {
+        $this->db->insert('penggalangan_dana', $data);
+    }
 }
