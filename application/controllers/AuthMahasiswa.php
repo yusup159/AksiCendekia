@@ -238,4 +238,56 @@ class AuthMahasiswa extends CI_Controller {
         }
         $this->load->view('mahasiswa/ajukanpenggalangan');
     }
+    public function inputpengajuan() {
+        $data['nama_kegiatan'] = $this->input->post('namakegiatan');
+        $data['tanggal'] = $this->input->post('tanggal');
+    
+        $config['upload_path'] = './dokumen_pengajuan/';
+        $config['allowed_types'] = 'pdf|doc|docx';
+        $config['encrypt_name'] = TRUE; 
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+    
+        if ($this->upload->do_upload('dokumen')) {
+            $data['dokumen'] = $this->upload->data('file_name');
+        } else {
+        }
+        $config['upload_path'] = './foto1_pengajuan/';
+        $config['allowed_types'] = 'jpg|png';
+        $config['encrypt_name'] = TRUE; 
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if ($this->upload->do_upload('foto1')) {
+            $data['foto1'] = $this->upload->data('file_name');
+        } else {
+        }
+        $config['upload_path'] = './foto2_pengajuan/';
+        $config['allowed_types'] = 'jpg|png';
+        $config['encrypt_name'] = TRUE; 
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if ($this->upload->do_upload('foto2')) {
+            $data['foto2'] = $this->upload->data('file_name');
+        } else {
+        }
+        $config['upload_path'] = './foto3_pengajuan/';
+        $config['allowed_types'] = 'jpg|png';
+        $config['file_name'] = 'foto3';
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if ($this->upload->do_upload('foto3')) {
+            $data['foto3'] = $this->upload->data('file_name');
+        } else {
+            // Handle error
+        }
+    
+        
+        $data['status'] = 'Di periksa';
+        $data['id_mahasiswa'] = $this->session->userdata('id'); 
+    
+        $this->AuthModel->inputPengajuan($data);
+    
+        redirect('halaman_setelah_pengajuan'); 
+    }
+    
 }

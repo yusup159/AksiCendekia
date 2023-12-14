@@ -71,6 +71,11 @@ class AuthModel extends CI_Model {
         return $query->result();
     }
 
+    public function inputPengajuan($data) {
+        $this->db->insert('pengajuan', $data); 
+    }
+    
+
 
 
 
@@ -109,5 +114,5 @@ class AuthModel extends CI_Model {
         $this->db->where('id', $user_id);
         $this->db->update('mahasiswa', $data);
     }
-   
+  
 }

@@ -111,8 +111,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class=" row">
                         <!-- /.col-md-6 -->
                         <div class="col-lg">
-                            <form action="<?php echo site_url('AuthMahasiswa/inputpengajuan')?>" method="post">
+                            <form action="<?php echo site_url('AuthMahasiswa/inputpengajuan')?>" method="post" enctype="multipart/form-data">
                             <div class="banner-galang">
+                            </div>
+                            <div>
+                                <label for="formFile" class="form-label">Nama Kegiatan</label>
+                                <input class="form-control" type="text" id="formFile" name="namakegiatan" >
+                            </div>
+                            <div>
+                                <label for="formFile" class="form-label">Tanggal Pengajuan</label>
+                                <input class="form-control" type="date" id="formFile" name="tanggal">
                             </div>
                             <div>
                                 <label for="formFile" class="form-label">Dokumen Penggalangan</label>
