@@ -118,4 +118,50 @@ class AuthAdmin extends CI_Controller {
         redirect('AuthAdmin/data_mahasiswa');
         
     }
+    public function data_pengajuan() {
+        if (!$this->session->userdata('id')) {
+            redirect('AuthAdmin/index');
+        }
+        $data['pengajuan'] = $this->AuthModel->getPengajuanData();
+        $this->load->view('admin/template/header');
+		$this->load->view('admin/template/sidebar');
+        $this->load->view('admin/datapengajuan', $data);
+        $this->load->view('admin/template/footer');
+    }
+    public function tolak($id) {
+        $data = array(
+            'status' => 'Di tolak',
+        );
+
+        $this->db->where('id', $id);
+        $this->db->update('pengajuan', $data);
+
+       
+        redirect('AuthAdmin/data_pengajuan'); 
+    }
+    public function terima($id) {
+        $data = array(
+            'status' => 'Di terima',
+        );
+
+        $this->db->where('id', $id);
+        $this->db->update('pengajuan', $data);
+
+       
+        redirect('AuthAdmin/data_pengajuan'); 
+    }
+
+    public function delete_pengajuan($id) {
+
+        $pengajuan = $this->AuthModel->getPengajuanById($id); 
+      
+        unlink('./dokumen_pengajuan/' . $pengajuan->dokumen);
+        unlink('./foto1_pengajuan/' . $pengajuan->foto1);
+        unlink('./foto2_pengajuan/' . $pengajuan->foto2);
+        unlink('./foto3_pengajuan/' . $pengajuan->foto3);
+
+ 
+        $this->AuthModel->deletePengajuan($id); 
+        redirect('AuthAdmin/data_pengajuan'); 
+    }
 }

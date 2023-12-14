@@ -70,14 +70,7 @@ class AuthModel extends CI_Model {
         $query = $this->db->get('mahasiswa');
         return $query->result();
     }
-    public function inputPengajuan($data) {
-        $this->db->insert('pengajuan', $data); 
-    }
-    public function getPengajuanByIdMahasiswa($id_mahasiswa) {
-        $this->db->where('id_mahasiswa', $id_mahasiswa);
-        $query = $this->db->get('pengajuan');
-        return $query->result();
-    }
+   
     
     
 
@@ -120,4 +113,28 @@ class AuthModel extends CI_Model {
         $this->db->update('mahasiswa', $data);
     }
   
+
+    //PENGAJUAN
+
+    public function inputPengajuan($data) {
+        $this->db->insert('pengajuan', $data); 
+    }
+    public function getPengajuanByIdMahasiswa($id_mahasiswa) {
+        $this->db->where('id_mahasiswa', $id_mahasiswa);
+        $query = $this->db->get('pengajuan');
+        return $query->result();
+    }
+    public function getPengajuanData() {
+        $query = $this->db->get('pengajuan');
+        return $query->result();
+    }
+    public function getPengajuanById($id) {
+        $this->db->where('id', $id);
+        $query = $this->db->get('pengajuan');
+        return $query->row(); 
+    }
+    public function deletePengajuan($id) {
+        $this->db->where('id', $id);
+        $this->db->delete('pengajuan');
+    }
 }
