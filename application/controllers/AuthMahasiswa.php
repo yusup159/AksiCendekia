@@ -8,6 +8,7 @@ class AuthMahasiswa extends CI_Controller {
         parent::__construct();
         $this->load->model('AuthModel');
         $this->load->library('form_validation');
+        $this->load->helper(array('url','download'));
     }
 
     public function index()
@@ -97,7 +98,10 @@ class AuthMahasiswa extends CI_Controller {
         if (!$this->session->userdata('id')) {
             redirect('AuthMahasiswa/index');
         }
-		$this->load->view('mahasiswa/template/dashboard');
+        $user_id = $this->session->userdata('id');
+        $mahasiswa_data = $this->AuthModel->get_mahasiswa_by_id($user_id);
+        $data['mahasiswa'] = $mahasiswa_data;
+		$this->load->view('mahasiswa/template/dashboard',$data);
 	}
 
 
@@ -145,10 +149,8 @@ class AuthMahasiswa extends CI_Controller {
         }
     
         if ($this->form_validation->run() == FALSE) {
-            // Jika validasi gagal, tampilkan kembali halaman edit_profil_mahasiswa dengan pesan error
             $this->load->view('mahasiswa/editprofil', $mahasiswa_data);
         } else {
-            // Jika validasi sukses, proses edit profil
             $data = array(
                 'username' => $this->input->post('username'),
                 'email' => $this->input->post('email'),
@@ -156,12 +158,10 @@ class AuthMahasiswa extends CI_Controller {
                 'nim' => $this->input->post('nim'),
             );
     
-            // Jika ingin mengubah password, tambahkan password baru ke data
             if ($this->input->post('password_baru')) {
                 $data['password'] = password_hash($this->input->post('password_baru'), PASSWORD_DEFAULT);
             }
     
-            // Jika ada upload foto baru, proses dan simpan
             if ($_FILES['foto']['name'] != '') {
                 $config['upload_path'] = './Asset/foto_mahasiswa/';
                 $config['allowed_types'] = 'gif|jpg|jpeg|png';
@@ -178,10 +178,8 @@ class AuthMahasiswa extends CI_Controller {
                 }
             }
     
-            // Proses update data mahasiswa
             $this->AuthModel->update_mahasiswa($user_id, $data);
     
-            // Redirect ke halaman profil setelah berhasil edit
             redirect('AuthMahasiswa/profil_mahasiswa');
         }
     }
@@ -200,7 +198,9 @@ class AuthMahasiswa extends CI_Controller {
         if (!$this->session->userdata('id')) {
             redirect('AuthMahasiswa/index');
         }
-        $this->load->view('mahasiswa/historipenggalangan');
+        $id_mahasiswa = $this->session->userdata('id');
+        $data['pengajuan'] = $this->AuthModel->getPengajuanByIdMahasiswa($id_mahasiswa);
+        $this->load->view('mahasiswa/historipenggalangan', $data);
     }
 
 
@@ -287,7 +287,15 @@ class AuthMahasiswa extends CI_Controller {
     
         $this->AuthModel->inputPengajuan($data);
     
-        redirect('halaman_setelah_pengajuan'); 
+        redirect('AuthMahasiswa/histori_penggalangan'); 
     }
+    public function downloadFile() {
+        $this->load->helper('download');
+        
+        $data = file_get_contents('Template_surat/dokumen.pdf');
+        force_download( $data);
+    }
+    
+
     
 }

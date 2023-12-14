@@ -44,7 +44,8 @@
                     <img src="./asset/icon/simpan.svg" alt="">
                 </a> -->
                 <a href="<?php echo site_url('AuthMahasiswa/profil_mahasiswa')?>">
-                    <img class="profile" src="<?php echo base_url('aksicendekia/asset/foto/profile.jpg')?>" alt="">
+                
+                    <img class="profile" src="<?php echo ($mahasiswa->foto != null) ? base_url('Asset/foto_mahasiswa/' . $mahasiswa->foto) : base_url('aksicendekia/asset/foto/belum_ada_foto.jpg'); ?>" alt="">
                 </a>
             </div>
         </div>

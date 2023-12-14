@@ -70,10 +70,15 @@ class AuthModel extends CI_Model {
         $query = $this->db->get('mahasiswa');
         return $query->result();
     }
-
     public function inputPengajuan($data) {
         $this->db->insert('pengajuan', $data); 
     }
+    public function getPengajuanByIdMahasiswa($id_mahasiswa) {
+        $this->db->where('id_mahasiswa', $id_mahasiswa);
+        $query = $this->db->get('pengajuan');
+        return $query->result();
+    }
+    
     
 
 

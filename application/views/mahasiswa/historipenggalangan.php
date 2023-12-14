@@ -134,51 +134,52 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Main content -->
             <div class="content">
                 <div class="container">
-                    <div class=" row">
+                <?php foreach ($pengajuan as $item): ?>
+                    <div class="row">
                         <!-- /.col-md-6 -->
                         <div class="col-lg">
                             <div class="donasi">
                                 <p class="judul">Nama Kegiatan</p>
-                                <p class="point">Festival Ketoprak Mahasiswa UIN Raden Mas Said</p>
+                                <p class="point"><?php echo $item->nama_kegiatan; ?></p>
                                 <p class="judul">Tanggal Pengajuan</p>
-                                <p class="point">29 November 2023</p>
+                                <?php 
+                                    $originalDate = $item->tanggal; 
+                                    $formattedDate = date("d F Y", strtotime($originalDate));
+                                ?>
+                                <p class="point"><?php echo $formattedDate; ?></p>
                                 <p class="judul">File Pengajuan Penggalangan</p>
-                                <a href="#">
-                                    <img src="<?php echo base_url('aksicendekia/asset/icon/folder.svg')?>" class="mr-1" alt="">
+                                
+                                <a href="<?php echo base_url('dokumen_pengajuan/' .$item->dokumen); ?>" download>
+                                    <img src="<?php echo base_url('aksicendekia/asset/icon/folder.svg'); ?>" class="mr-1" alt="">
                                     File Pengajuan
                                 </a>
+                                         
+                               
+
+
+
+
                                 <p class="judul mt-4">Status Pengajuan</p>
-                                <p class="point"><span class="badge rounded-pill bg-primary">Diterima</span></p>
-                            </div>
-                            <div class="donasi">
-                                <p class="judul">Nama Kegiatan</p>
-                                <p class="point">Pentas Seni Mahasiswa UIN Raden Mas Said</p>
-                                <p class="judul">Tanggal Pengajuan</p>
-                                <p class="point">30 November 2023</p>
-                                <p class="judul">File Pengajuan Penggalangan</p>
-                                <a href="#">
-                                    <img src="<?php echo base_url('aksicendekia/asset/icon/folder.svg')?>" class="mr-1" alt="">
-                                    File Pengajuan
-                                </a>
-                                <p class="judul mt-4">Status Pengajuan</p>
-                                <p class="point"><span class="badge rounded-pill bg-warning">Sedang Diperiksa</span></p>
-                            </div>
-                            <div class="donasi">
-                                <p class="judul">Nama Kegiatan</p>
-                                <p class="point">Penggalangan Dana Tambahan Pensi</p>
-                                <p class="judul">Tanggal Pengajuan</p>
-                                <p class="point">1 Desember 2023</p>
-                                <p class="judul">File Pengajuan Penggalangan</p>
-                                <a href="#">
-                                    <img src="<?php echo base_url('aksicendekia/asset/icon/folder.svg')?>" class="mr-1" alt="">
-                                    File Pengajuan
-                                </a>
-                                <p class="judul mt-4">Status Pengajuan</p>
-                                <p class="point"><span class="badge rounded-pill bg-danger">Ditolak</span></p>
+                                <p class="point">
+    <span class="badge rounded-pill <?php
+        if ($item->status == 'Di terima') {
+            echo 'bg-primary';
+        } elseif ($item->status == 'Di periksa') {
+            echo 'bg-warning';
+        } elseif ($item->status == 'Di tolak') {
+            echo 'bg-danger';
+        }
+    ?>">
+        <?php echo $item->status; ?>
+    </span>
+</p>
+
                             </div>
                         </div>
                         <!-- /.col-md-6 -->
                     </div>
+                <?php endforeach; ?>
+                                
                     <!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>

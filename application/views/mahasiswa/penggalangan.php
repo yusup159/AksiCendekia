@@ -116,9 +116,9 @@
                                 penggalangan dana, dan mengetahui seluruh rencana kegiatan penggalangan dana. Kami
                                 selaku tim Aksi Cendekia, akan meninjau ulang kegiatan penggalangan yang akan Kawan
                                 Cendekia adakan. Dengan alur sebagai berikut :</p>
-                            <p>1. Kawan Cendekia mendownload dan mengisi dokumen berikut <a href="#">Dokumen
+                            <p>1. Kawan Cendekia mendownload dan mengisi dokumen berikut <a href="<?php echo base_url('Template_surat/dokumen.pdf')?>"download>Dokumen
                                     Penggalangan</a></p>
-                            <p>2. Kawan Cendekia mengupload <a href="#">Dokumen Penggalangan</a> dan memberikan bukti
+                            <p>2. Kawan Cendekia mengupload <a href="<?php echo base_url('Template_surat/dokumen.pdf')?>"download>Dokumen Penggalangan</a> dan memberikan bukti
                                 foto rencana kegiatan.</p>
                             <p>3. Kawan Cendekia menunggu konfirmasi kegiatan penggalangan dari tim Aksi Cendekia</p>
                             <a href="<?= site_url('AuthMahasiswa/ajukanpenggalangan')?>">
