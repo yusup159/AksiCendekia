@@ -34,7 +34,7 @@
                 <td><?php echo $formattedDate1; ?></td>
               
 				<td>
-    <a href="<?php echo site_url('AuthAdmin/delete_penggalangan/'.$row->id);?>" onclick="return confirm('Yakin Akan Hapus Data Ini?')" class="btn btn-danger btn-sm">
+    <a href="<?php echo site_url('AuthAdmin/delete_penggalangan/'.$row->id_penggalangan);?>" onclick="return confirm('Yakin Akan Hapus Data Ini?')" class="btn btn-danger btn-sm">
         <i class="fa fa-trash"></i> hapus
     </a>
 </td>

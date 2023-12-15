@@ -101,8 +101,11 @@ class AuthMahasiswa extends CI_Controller {
         $user_id = $this->session->userdata('id');
         $mahasiswa_data = $this->AuthModel->get_mahasiswa_by_id($user_id);
         $data['mahasiswa'] = $mahasiswa_data;
+        $data['result'] = $this->AuthModel->getJoinedData();
+
 		$this->load->view('mahasiswa/template/dashboard',$data);
 	}
+    
 
 
     public function profil_mahasiswa(){
@@ -204,12 +207,17 @@ class AuthMahasiswa extends CI_Controller {
     }
 
 
-    public function detail_donasi(){
+    public function detail_donasi($id_penggalangan){
         if (!$this->session->userdata('id')) {
             redirect('AuthMahasiswa/index');
         }
-        $this->load->view('mahasiswa/detaildonasi');
+        $user_id = $this->session->userdata('id');
+        $mahasiswa_data = $this->AuthModel->get_mahasiswa_by_id($user_id);
+        $data['mahasiswa'] = $mahasiswa_data;
+        $data['penggalangan_dana'] = $this->AuthModel->getJoinedDataById($id_penggalangan);
+        $this->load->view('mahasiswa/detaildonasi',$data);
     }
+    
 
 
     public function galangdana(){

@@ -192,7 +192,7 @@ class AuthAdmin extends CI_Controller {
         $this->AuthModel->tambahDataPenggalangan($data);
 
         // Redirect ke halaman tertentu setelah input data berhasil
-        redirect('halaman_sukses');
+        redirect('AuthAdmin/data_penggalangan');
     }
     public function delete_penggalangan($id) {
         if (!$this->session->userdata('id')) {

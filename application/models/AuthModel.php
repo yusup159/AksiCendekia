@@ -143,6 +143,7 @@ class AuthModel extends CI_Model {
         $this->db->from('pengajuan');
         $this->db->join('penggalangan_dana', 'pengajuan.id = penggalangan_dana.id_pengajuan', 'left');
         $this->db->where('penggalangan_dana.id_pengajuan IS NULL', null, false);
+        $this->db->where('pengajuan.status', 'Di terima');
         $query = $this->db->get();
         return $query->result();
     }
@@ -164,16 +165,31 @@ class AuthModel extends CI_Model {
         return $query->result();
     }
     public function getPenggalanganById($id) {
-        $this->db->where('id', $id);
+        $this->db->where('id_penggalangan', $id);
         $query = $this->db->get('penggalangan_dana');
         return $query->row(); 
     }
     public function deletePenggalangan($id) {
-        $this->db->where('id', $id);
+        $this->db->where('id_penggalangan', $id);
         $this->db->delete('penggalangan_dana');
     }
     
     public function tambahDataPenggalangan($data) {
         $this->db->insert('penggalangan_dana', $data);
+    }
+    public function getJoinedDataById($id_penggalangan) {
+        $this->db->select('pengajuan.*, penggalangan_dana.*');
+        $this->db->from('pengajuan');
+        $this->db->join('penggalangan_dana', 'pengajuan.id = penggalangan_dana.id_pengajuan');
+        $this->db->where('penggalangan_dana.id_penggalangan', $id_penggalangan);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function getJoinedData() {
+        $this->db->select('*');
+        $this->db->from('pengajuan');
+        $this->db->join('penggalangan_dana', 'pengajuan.id = penggalangan_dana.id_pengajuan');
+        $query = $this->db->get();
+        return $query->result();
     }
 }

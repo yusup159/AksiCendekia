@@ -153,26 +153,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <img src="<?php echo base_url('aksicendekia/asset/icon/folder.svg'); ?>" class="mr-1" alt="">
                                     File Pengajuan
                                 </a>
-                                         
-                               
-
-
-
-
                                 <p class="judul mt-4">Status Pengajuan</p>
                                 <p class="point">
-    <span class="badge rounded-pill <?php
-        if ($item->status == 'Di terima') {
-            echo 'bg-primary';
-        } elseif ($item->status == 'Di periksa') {
-            echo 'bg-warning';
-        } elseif ($item->status == 'Di tolak') {
-            echo 'bg-danger';
-        }
-    ?>">
-        <?php echo $item->status; ?>
-    </span>
-</p>
+                                <span class="badge rounded-pill <?php
+                                    if ($item->status == 'Di terima') {
+                                        echo 'bg-primary';
+                                    } elseif ($item->status == 'Di periksa') {
+                                        echo 'bg-warning';
+                                    } elseif ($item->status == 'Di tolak') {
+                                        echo 'bg-danger';
+                                    }
+                                ?>">
+                                    <?php echo $item->status; ?>
+                                </span>
+                            </p>
 
                             </div>
                         </div>
