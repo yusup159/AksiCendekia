@@ -51,7 +51,7 @@ class AuthAdmin extends CI_Controller {
     
             if ($user) {
                 $userdata = array(
-                    'id' => $user->id,
+                    'id_alluser' => $user->id,
                     'username' => $user->username,
                     'email' => $user->email,
                 );
@@ -73,7 +73,7 @@ class AuthAdmin extends CI_Controller {
 
     
 	public function dashboard(){
-        if (!$this->session->userdata('id')) {
+        if (!$this->session->userdata('id_alluser')) {
             redirect('AuthAdmin/index');
         }
 		$this->load->view('admin/template/header');
@@ -83,7 +83,7 @@ class AuthAdmin extends CI_Controller {
 
 	}
     public function data_donatur() {
-        if (!$this->session->userdata('id')) {
+        if (!$this->session->userdata('id_alluser')) {
             redirect('AuthAdmin/index');
         }
         $data['donatur'] = $this->AuthModel->getDonaturData();
@@ -93,7 +93,7 @@ class AuthAdmin extends CI_Controller {
         $this->load->view('admin/template/footer');
     }
     public function data_mahasiswa() {
-        if (!$this->session->userdata('id')) {
+        if (!$this->session->userdata('id_alluser')) {
             redirect('AuthAdmin/index');
         }
         $data['mahasiswa'] = $this->AuthModel->getMahasiswaData();
@@ -103,7 +103,7 @@ class AuthAdmin extends CI_Controller {
         $this->load->view('admin/template/footer');
     }
     public function delete_donatur($id){
-        if (!$this->session->userdata('id')) {
+        if (!$this->session->userdata('id_alluser')) {
             redirect('AuthAdmin/index');
         }
         $this->AuthModel->delete('donatur', 'id',$id);
@@ -111,7 +111,7 @@ class AuthAdmin extends CI_Controller {
         
     }
     public function delete_mahasiswa($id){
-        if (!$this->session->userdata('id')) {
+        if (!$this->session->userdata('id_alluser')) {
             redirect('AuthAdmin/index');
         }
         $this->AuthModel->delete('mahasiswa', 'id',$id);
@@ -119,7 +119,7 @@ class AuthAdmin extends CI_Controller {
         
     }
     public function data_pengajuan() {
-        if (!$this->session->userdata('id')) {
+        if (!$this->session->userdata('id_alluser')) {
             redirect('AuthAdmin/index');
         }
         $data['pengajuan'] = $this->AuthModel->getPengajuanData();
@@ -165,7 +165,7 @@ class AuthAdmin extends CI_Controller {
         redirect('AuthAdmin/data_pengajuan'); 
     }
     public function data_penggalangan() {
-        if (!$this->session->userdata('id')) {
+        if (!$this->session->userdata('id_alluser')) {
             redirect('AuthAdmin/index');
         }
     
@@ -195,7 +195,7 @@ class AuthAdmin extends CI_Controller {
         redirect('AuthAdmin/data_penggalangan');
     }
     public function delete_penggalangan($id) {
-        if (!$this->session->userdata('id')) {
+        if (!$this->session->userdata('id_alluser')) {
             redirect('AuthAdmin/index');
         }
     

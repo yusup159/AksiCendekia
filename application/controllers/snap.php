@@ -131,7 +131,7 @@ class Snap extends CI_Controller {
 		echo"<pre>";
 		$nominal = $this->input->post('nominal');
 		$judul = $this->input->post('judul');
-		$id_mahasiswa = $this->input->post('id_mahasiswa');
+		$alluser_id = $this->input->post('alluser_id');
 		$id_penggalangan = $this->input->post('id_penggalangan');
 		// Pastikan untuk mengganti nilai-nilai di dalam array dengan data yang benar
 		$data = [
@@ -144,7 +144,7 @@ class Snap extends CI_Controller {
 			'pdf_url' => $result['pdf_url'],
 			'status' => $result['status_code'],
 			'jumlah_donasi' => $nominal,
-			'id_mahasiswa' => $id_mahasiswa,
+			'id_alluser' => $alluser_id,
 			'id_penggalangan' => $id_penggalangan,
 		];
 	

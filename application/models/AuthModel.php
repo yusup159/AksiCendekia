@@ -205,4 +205,77 @@ class AuthModel extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    public function get_alluser_id_by_mahasiswa_id($mahasiswa_id) {
+        $this->db->select('email');
+        $this->db->from('mahasiswa');
+        $this->db->where('id', $mahasiswa_id);
+        $query_mahasiswa = $this->db->get();
+
+        if ($query_mahasiswa->num_rows() > 0) {
+            $mahasiswa_data = $query_mahasiswa->row();
+            $email_mahasiswa = $mahasiswa_data->email;
+
+            $this->db->select('id_alluser');
+            $this->db->from('alluser');
+            $this->db->where('email', $email_mahasiswa);
+            $query_alluser = $this->db->get();
+
+            if ($query_alluser->num_rows() > 0) {
+                $alluser_data = $query_alluser->row();
+                $alluser_id = $alluser_data->id_alluser;
+
+                return $alluser_id;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
+    public function get_transaction_data_by_mahasiswa_id($mahasiswa_id) {
+        // Langkah 1: Dapatkan email dari tabel mahasiswa berdasarkan ID mahasiswa
+        $this->db->select('email');
+        $this->db->from('mahasiswa');
+        $this->db->where('id', $mahasiswa_id);
+        $query_mahasiswa = $this->db->get();
+
+        // Periksa apakah query berhasil dan hasilnya tidak kosong
+        if ($query_mahasiswa->num_rows() > 0) {
+            $mahasiswa_data = $query_mahasiswa->row();
+            $email_mahasiswa = $mahasiswa_data->email;
+
+            // Langkah 2: Gunakan email untuk mencari ID alluser dari tabel alluser
+            $this->db->select('id_alluser');
+            $this->db->from('alluser');
+            $this->db->where('email', $email_mahasiswa);
+            $query_alluser = $this->db->get();
+
+            // Periksa apakah query berhasil dan hasilnya tidak kosong
+            if ($query_alluser->num_rows() > 0) {
+                $alluser_data = $query_alluser->row();
+                $alluser_id = $alluser_data->id_alluser;
+
+                // Langkah 3: Gunakan ID alluser untuk mencari data transaksi yang di-join dengan data penggalangan dana
+                $this->db->select('*');
+                $this->db->from('transaksi');
+                $this->db->join('penggalangan_dana', 'transaksi.id_penggalangan = penggalangan_dana.id_penggalangan');
+                $this->db->where('transaksi.id_alluser', $alluser_id);
+                $query_transaksi = $this->db->get();
+
+                // Periksa apakah query berhasil
+                if ($query_transaksi->num_rows() > 0) {
+                    return $query_transaksi->result();
+                } else {
+                    // Jika tidak ada hasil dari query transaksi
+                    return null;
+                }
+            } else {
+                // Jika tidak ada hasil dari query alluser
+                return null;
+            }
+        } else {
+            // Jika tidak ada hasil dari query mahasiswa
+            return null;
+        }
+    }
 }

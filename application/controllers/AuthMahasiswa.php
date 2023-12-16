@@ -194,7 +194,8 @@ class AuthMahasiswa extends CI_Controller {
             redirect('AuthMahasiswa/index');
         }
         $id_mahasiswa = $this->session->userdata('id');
-        $data['result'] = $this->AuthModel->get_data_by_mahasiswa_id($id_mahasiswa);
+        $result = $this->AuthModel->get_transaction_data_by_mahasiswa_id($id_mahasiswa);
+        $data['result'] = $result;
         $this->load->view('mahasiswa/historidonasi',$data);
     }
 
@@ -227,8 +228,9 @@ class AuthMahasiswa extends CI_Controller {
             redirect('AuthMahasiswa/index');
         }
         $user_id = $this->session->userdata('id');
-        $mahasiswa_data = $this->AuthModel->get_mahasiswa_by_id($user_id);
-        $data['mahasiswa'] = $mahasiswa_data;
+        
+        $alluser_id = $this->AuthModel->get_alluser_id_by_mahasiswa_id($user_id);
+        $data['alluser_id'] = $alluser_id;
         $data['danadonasi'] = $this->AuthModel->get_data_penggalangan($id_penggalangan);
         $this->load->view('mahasiswa/galangdana',$data);
     }

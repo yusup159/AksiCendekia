@@ -15,26 +15,26 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="nominal">
-            <h5>Masukan Nominal Donasi</h3>
-            <form id="payment-form" method="post" action="<?=site_url('/snap/finish')?>">
-            <?php foreach ($danadonasi as $row) { ?>
-                <input type="hidden" name="id_mahasiswa"  value="<?php echo ($mahasiswa->id)?>">
-                <input type="hidden" name="result_type" id="result-type" value="">
-                <input type="hidden" name="result_data" id="result-data" value="">
-                <input name="id_penggalangan" type="hidden" value="<?php echo $row->id_penggalangan ?>" id="id_penggalangan">
-                <input name="judul" type="hidden" value="<?php echo $row->judul ?>" id="judul">
-                <input name="nominal" type="number" placeholder="Cth : Rp. 10.000" id="nominal" required>
-                <?php }?>
-                <p class="mt-3">*Minimal donasi Rp. 5.000</p>
-                <p>*5% dari nominal akan dimasukan sebagai donasi untuk operasional AksiCendekia</p>
-                <button class="btn btn-submit mt-4" id="pay-button"><img src="<?php echo base_url('aksicendekia/asset/icon/arrow.svg')?>" alt=""> Lanjutkan Pembayaran</button>
+      <div class="container">
+          <div class="nominal">
+              <h5>Masukan Nominal Donasi</h3>
+              <form id="payment-form" method="post" action="<?=site_url('/snap/finish')?>">
+              <input type="hidden" name="alluser_id" value="<?php echo $alluser_id ?>">
+              <?php foreach ($danadonasi as $row) { ?>
+                  <input type="hidden" name="result_type" id="result-type" value="">
+                  <input type="hidden" name="result_data" id="result-data" value="">
+                  <input name="id_penggalangan" type="hidden" value="<?php echo $row->id_penggalangan ?>" id="id_penggalangan">
+                  <input name="judul" type="hidden" value="<?php echo $row->judul ?>" id="judul">
+                  <input name="nominal" type="number" placeholder="Cth : Rp. 10.000" id="nominal" required>
+                  <?php }?>
+                  <p class="mt-3">*Minimal donasi Rp. 5.000</p>
+                  <p>*5% dari nominal akan dimasukan sebagai donasi untuk operasional AksiCendekia</p>
+                  <button class="btn btn-submit mt-4" id="pay-button"><img src="<?php echo base_url('aksicendekia/asset/icon/arrow.svg')?>" alt=""> Lanjutkan Pembayaran</button>
 
-                </a>
-                </form>
-        </div>
-    </div>
+                  </a>
+                  </form>
+          </div>
+      </div>
   
 
 
