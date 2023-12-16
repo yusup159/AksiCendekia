@@ -193,4 +193,16 @@ class AuthModel extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+
+
+    //TRANSAKSI
+    public function get_data_by_mahasiswa_id($mahasiswa_id) {
+        $this->db->select('penggalangan_dana.*, transaksi.*');
+        $this->db->from('penggalangan_dana');
+        $this->db->join('transaksi', 'penggalangan_dana.id_penggalangan = transaksi.id_penggalangan');
+        $this->db->where('transaksi.id_mahasiswa', $mahasiswa_id);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

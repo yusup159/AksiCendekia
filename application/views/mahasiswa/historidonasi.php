@@ -111,23 +111,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="container">
           <div class=" row">
             <!-- /.col-md-6 -->
+            <?php foreach ($result as $row) {?>
             <div class="col-lg">
               <div class="donasi">
                 <p class="judul">Nama Kegiatan</p>
-                <p class="point">Festival Ketoprak Mahasiswa UIN Raden Mas Said</p>
+                <p class="point"><?php echo $row->judul; ?></p>
                 <p class="judul">Jumlah Donasi</p>
-                <p class="point">Rp. 20.000</p>
+                <p class="point"><?php echo $row->jumlah_donasi; ?></p>
                 <p class="judul">Tanggal Donasi</p>
-                <p class="point">29 November 2023</p>
+                <p class="point"><?php echo $row->tanggal; ?></p>
+                <p class="judul">Status Pembayaran</p>
+                <p class="point">
+                  <?php if ($row->status == 200){?>
+                    <span class="badge rounded-pill bg-primary"> Berhasil</span>
+                    <?php }elseif ($row->status == 201) {?>
+                    <span class="badge rounded-pill bg-warning"> Pending</span>
+                    <?php }else  {?>
+                    <span class="badge rounded-pill bg-danger"> Expired</span>
+                    <?php }?>
+                    
+
+                </p>
               </div>
-              <div class="donasi">
-                <p class="judul">Nama Kegiatan</p>
-                <p class="point">Festival Ketoprak Mahasiswa UIN Raden Mas Said</p>
-                <p class="judul">Jumlah Donasi</p>
-                <p class="point">Rp. 20.000</p>
-                <p class="judul">Tanggal Donasi</p>
-                <p class="point">29 November 2023</p>
-              </div>
+              <?php }?>
             </div>
             <!-- /.col-md-6 -->
           </div>

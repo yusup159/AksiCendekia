@@ -113,7 +113,8 @@
                         <p class="kegiatan"><?php echo $row->jumlahdonasi ?> </p>
                         
                     </div>
-                    <a href="./nominal.html">
+                    
+                    <a href="<?php echo site_url('AuthMahasiswa/galangdana/'.$row->id_penggalangan) ?>">
                         <button class="btn btn-light btn-bayar mt-4">
                             <img src="./asset/icon/arrow.svg" alt="">
                             Lakukan Donasi</button></a>

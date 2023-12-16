@@ -35,74 +35,76 @@ class Snap extends CI_Controller {
 
     public function token()
     {
+		$nominal = $this->input->post('nominal');
+		$judul = $this->input->post('judul');
+
+
 		
 		// Required
 		$transaction_details = array(
 		  'order_id' => rand(),
-		  'gross_amount' => 94000, // no decimal allowed for creditcard
+		  'gross_amount' => $nominal, // no decimal allowed for creditcard
 		);
 
 		// Optional
 		$item1_details = array(
 		  'id' => 'a1',
-		  'price' => 18000,
-		  'quantity' => 3,
-		  'name' => "Apple"
+		  'price' => $nominal,
+		  'quantity' => 1,
+		  'name' => "Memberikan donasi kegiatan ".$judul
 		);
 
 		// Optional
-		$item2_details = array(
-		  'id' => 'a2',
-		  'price' => 20000,
-		  'quantity' => 2,
-		  'name' => "Orange"
-		);
+		// $item2_details = array(
+		//   'id' => 'a2',
+		//   'price' => 20000,
+		//   'quantity' => 2,
+		//   'name' => "Orange"
+		// );
 
 		// Optional
-		$item_details = array ($item1_details, $item2_details);
+		$item_details = array ($item1_details);
 
-		// Optional
-		$billing_address = array(
-		  'first_name'    => "Andri",
-		  'last_name'     => "Litani",
-		  'address'       => "Mangga 20",
-		  'city'          => "Jakarta",
-		  'postal_code'   => "16602",
-		  'phone'         => "081122334455",
-		  'country_code'  => 'IDN'
-		);
+		// // Optional
+		// $billing_address = array(
+		//   'first_name'    => "Andri",
+		//   'last_name'     => "Litani",
+		//   'address'       => "Mangga 20",
+		//   'city'          => "Jakarta",
+		//   'postal_code'   => "16602",
+		//   'phone'         => "081122334455",
+		//   'country_code'  => 'IDN'
+		// );
 
-		// Optional
-		$shipping_address = array(
-		  'first_name'    => "Obet",
-		  'last_name'     => "Supriadi",
-		  'address'       => "Manggis 90",
-		  'city'          => "Jakarta",
-		  'postal_code'   => "16601",
-		  'phone'         => "08113366345",
-		  'country_code'  => 'IDN'
-		);
+		// // Optional
+		// $shipping_address = array(
+		//   'first_name'    => "Obet",
+		//   'last_name'     => "Supriadi",
+		//   'address'       => "Manggis 90",
+		//   'city'          => "Jakarta",
+		//   'postal_code'   => "16601",
+		//   'phone'         => "08113366345",
+		//   'country_code'  => 'IDN'
+		// );
+	
 
 		// Optional
 		$customer_details = array(
-		  'first_name'    => "Andri",
-		  'last_name'     => "Litani",
-		  'email'         => "andri@litani.com",
-		  'phone'         => "081122334455",
-		  'billing_address'  => $billing_address,
-		  'shipping_address' => $shipping_address
+		  'first_name'    => $judul,
+
+		  
 		);
 
 		// Data yang akan dikirim untuk request redirect_url.
         $credit_card['secure'] = true;
-        //ser save_card true to enable oneclick or 2click
-        //$credit_card['save_card'] = true;
+        // ser save_card true to enable oneclick or 2click
+        // $credit_card['save_card'] = true;
 
         $time = time();
         $custom_expiry = array(
             'start_time' => date("Y-m-d H:i:s O",$time),
             'unit' => 'minute', 
-            'duration'  => 2
+            'duration'  => 15
         );
         
         $transaction_data = array(
@@ -111,6 +113,7 @@ class Snap extends CI_Controller {
             'customer_details'   => $customer_details,
             'credit_card'        => $credit_card,
             'expiry'             => $custom_expiry
+
         );
 
 		error_log(json_encode($transaction_data));
@@ -119,12 +122,41 @@ class Snap extends CI_Controller {
 		echo $snapToken;
     }
 
-    public function finish()
-    {
-    	$result = json_decode($this->input->post('result_data'));
-    	echo 'RESULT <br><pre>';
-    	var_dump($result);
-    	echo '</pre>' ;
+	public function finish()
+	{
+		// Gunakan tanda panah (->) untuk mendeklarasikan array
+		$result = json_decode($this->input->post('result_data'), true);
+		echo"<pre>";
+		echo var_dump($result);
+		echo"<pre>";
+		$nominal = $this->input->post('nominal');
+		$judul = $this->input->post('judul');
+		$id_mahasiswa = $this->input->post('id_mahasiswa');
+		$id_penggalangan = $this->input->post('id_penggalangan');
+		// Pastikan untuk mengganti nilai-nilai di dalam array dengan data yang benar
+		$data = [
+			'nama_kegiatan' => $judul,
+			'order_id' => $result['order_id'],
+			'tanggal' => $result['transaction_time'],
+			'tipe_pembayaran' => $result['payment_type'],
+			'metode_pembayaran' => $result['va_numbers'][0]['va_number'],
+			'bank' => $result['va_numbers'][0]['bank'],
+			'pdf_url' => $result['pdf_url'],
+			'status' => $result['status_code'],
+			'jumlah_donasi' => $nominal,
+			'id_mahasiswa' => $id_mahasiswa,
+			'id_penggalangan' => $id_penggalangan,
+		];
+	
+		// Ganti "$simpan->" menjadi "$this->db->"
+		$simpan = $this->db->insert('transaksi', $data);
+	
+		if ($simpan) {
+			redirect('AuthMahasiswa/histori_donasi');
+		} else {
+			redirect('AuthMahasiswa/galangdana');
+		}
+	}
+	
 
-    }
 }
