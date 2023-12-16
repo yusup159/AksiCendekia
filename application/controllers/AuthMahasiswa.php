@@ -214,7 +214,7 @@ class AuthMahasiswa extends CI_Controller {
         $user_id = $this->session->userdata('id');
         $mahasiswa_data = $this->AuthModel->get_mahasiswa_by_id($user_id);
         $data['mahasiswa'] = $mahasiswa_data;
-        $data['penggalangan_dana'] = $this->AuthModel->getJoinedDataById($id_penggalangan);
+        $data['dana'] = $this->AuthModel->get_data_penggalangan($id_penggalangan);
         $this->load->view('mahasiswa/detaildonasi',$data);
     }
     

@@ -177,11 +177,12 @@ class AuthModel extends CI_Model {
     public function tambahDataPenggalangan($data) {
         $this->db->insert('penggalangan_dana', $data);
     }
-    public function getJoinedDataById($id_penggalangan) {
-        $this->db->select('pengajuan.*, penggalangan_dana.*');
-        $this->db->from('pengajuan');
-        $this->db->join('penggalangan_dana', 'pengajuan.id = penggalangan_dana.id_pengajuan');
+    public function get_data_penggalangan($id_penggalangan) {
+        $this->db->select('penggalangan_dana.*, pengajuan.*');
+        $this->db->from('penggalangan_dana');
+        $this->db->join('pengajuan', 'penggalangan_dana.id_pengajuan = pengajuan.id');
         $this->db->where('penggalangan_dana.id_penggalangan', $id_penggalangan);
+        
         $query = $this->db->get();
         return $query->result();
     }
