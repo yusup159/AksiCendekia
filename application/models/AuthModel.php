@@ -193,6 +193,15 @@ class AuthModel extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    public function searchData($query) {
+        $this->db->select('*');
+        $this->db->from('pengajuan');
+        $this->db->join('penggalangan_dana', 'pengajuan.id = penggalangan_dana.id_pengajuan');
+        $this->db->like('judul', $query); // Ubah 'judul' ke kolom yang ingin Anda cari
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
 
 
     //TRANSAKSI

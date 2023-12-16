@@ -105,6 +105,15 @@ class AuthMahasiswa extends CI_Controller {
 
 		$this->load->view('mahasiswa/template/dashboard',$data);
 	}
+    public function search() {
+        $query = $this->input->get('query');
+        $user_id = $this->session->userdata('id');
+        $mahasiswa_data = $this->AuthModel->get_mahasiswa_by_id($user_id);
+        $data['mahasiswa'] = $mahasiswa_data;
+        $data['result'] = $this->AuthModel->searchData($query);
+        $this->load->view('mahasiswa/search', $data);
+    }
+    
     
 
 

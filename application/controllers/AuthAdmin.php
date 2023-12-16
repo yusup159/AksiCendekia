@@ -46,12 +46,13 @@ class AuthAdmin extends CI_Controller {
         } else {
             $email = $this->input->post('email');
             $password = $this->input->post('password');
+            var_dump($email, $password);
     
             $user = $this->AuthModel->login_user($email, $password);
     
             if ($user) {
                 $userdata = array(
-                    'id_alluser' => $user->id,
+                    'id_alluser' => $user->id_alluser,
                     'username' => $user->username,
                     'email' => $user->email,
                 );
