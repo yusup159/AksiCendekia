@@ -27,24 +27,25 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                    <form class="row g-3 mt-1 search-bar">
-                        <div class="col-auto">
-                            <label for="inputPassword2" class="visually-hidden"></label>
-                            <input type="text" class="form-control search" id="inputPassword2"
-                                placeholder="Lagi mau cari topik apa ?">
-                        </div>
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-search mb-3">
-                                <img src="<?php echo base_url('aksicendekia/asset/foto/search.svg')?>" alt="">
-                            </button>
-                        </div>
-                    </form>
+                <form class="row g-3 mt-1 search-bar" method="get" action="<?php echo site_url('AuthDonatur/search'); ?>">
+                <div class="col-auto">
+                    <label for="inputPassword2" class="visually-hidden"></label>
+                    <input type="text" class="form-control search" id="inputPassword2" name="query" placeholder="Lagi mau cari topik apa?">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-search mb-3">
+                        <img src="<?php echo base_url('aksicendekia/asset/foto/search.svg')?>" alt="">
+                    </button>
+                </div>
+            </form>
+
                 </div>
                 <!-- <a href="#" class="profile-link">
                     <img src="./asset/icon/simpan.svg" alt="">
                 </a> -->
                 <a href="<?php echo site_url('AuthDonatur/profil_donatur')?>">
-                    <img class="profile" src="<?php echo base_url('aksicendekia/asset/foto/profile.jpg')?>" alt="">
+                
+                    <img class="profile" src="<?php echo ($donatur->foto != null) ? base_url('Asset/foto_donatur/' . $donatur->foto) : base_url('aksicendekia/asset/foto/belum_ada_foto.jpg'); ?>" alt="">
                 </a>
             </div>
         </div>
@@ -69,50 +70,54 @@
     <!-- End Hero -->
     <!-- Card 2-->
     <div class="container">
-        <div class="galang">
+    <div class="galang">
             <h3 class="mt-5">Kegiatan yang memerlukan dana segera,<br><span>bantu kawan cendekia lain nya</span></h3>
         </div>
-        <div class="bungkus-galang">
-            <div class="row">
-                <div class="card col-lg-4 mb-3">
-                    <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <a href="<?= site_url('AuthDonatur/detail_donasi')?>" class="link">
-                            <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
-                            <h5 class="card-title">Festival Pentas Seni Akhir Tahun
-                                Universitas Amikom Yogyakarta</h5>
-                            <p class="nominal"><span>Rp. 130.000.000 </span> Dana Terkumpul</p>
+    <div class="bungkus-galang">
+        <div class="row">
+        <?php
+foreach ($result as $row) {?>
+                    <div class="card col-lg-4 mb-3">
+                        <img src="<?php echo base_url('foto1_pengajuan/'.$row->foto1); ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                    <a href="<?php echo site_url('AuthDonatur/detail_donasi/'.$row->id_penggalangan) ?>">
+                                <p class="penyelenggara"><?= $row->UKM ?></p>
+                                <h5 class="card-title"><?= $row->judul ?></h5>
+                                <p class="nominal"><span>Rp. <?= number_format($row->jumlahdonasi) ?> </span> Dana Terkumpul</p>
                         </a>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75"
-                                aria-valuemin="0" aria-valuemax="100"></div>
+
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: <?= ($row->jumlahdonasi / $row->donasi) * 100 ?>%" aria-valuenow="<?= ($row->jumlahdonasi / $row->donasi) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
                         </div>
+
                     </div>
-                </div>
                 
-            </div>
+                <?php } ?>
         </div>
     </div>
+</div>
     <!-- Card -->
 
     <!-- Banner -->
-    <div class="container mt-5">
+    <!-- <div class="container mt-5">
         <div class="banner">
         </div>
-    </div>
+    </div> -->
     <!-- End Banner -->
 
     <!-- Card 2 -->
-    <div class="container mt-5">
+    <!-- <div class="container mt-5">
         <div class="galang">
             <h3 class="mt-5">Kegiatan Yang Baru Ditambahkan</h3>
         </div>
         <div class="bungkus-galang">
             <div class="row">
+                
                 <div class="card col-lg-4 mb-3">
                     <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a href="<?= site_url('AuthDonatur/detail_donasi')?>" class="link">
+                        <a href="<?php echo site_url('AuthMahasiswa/detail_donasi') ?>" class="link">
                             <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                             <h5 class="card-title">Festival Pentas Seni Akhir Tahun
                                 Universitas Amikom Yogyakarta</h5>
@@ -124,10 +129,24 @@
                         </div>
                     </div>
                 </div>
-               
+                <div class="card col-lg-4 mb-3">
+                    <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <a href="<?php echo site_url('AuthMahasiswa/detail_donasi') ?>" class="link">
+                            <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
+                            <h5 class="card-title">Festival Pentas Seni Akhir Tahun
+                                Universitas Amikom Yogyakarta</h5>
+                            <p class="nominal"><span>Rp. 130.000.000 </span> Dana Terkumpul</p>
+                        </a>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Card 2 -->
     <div class="container mt-5">
         <div class="seeall text-center">

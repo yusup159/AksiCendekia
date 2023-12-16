@@ -30,68 +30,54 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="navbar-nav p-4">
             </ul>
         </nav>
-    <!-- /.navbar -->
 
-    <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="<?php echo site_url('AuthDonatur/dashboard')?>" class="brand-link">
         <img src="<?php echo base_url('aksicendekia/asset/foto/aksilogo.png')?>" class="ml-2" alt="">
-
       </a>
 
-      <!-- Sidebar -->
       <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-          </div>
-          <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
-          </div>
-        </div> -->
 
-        <!-- SidebarSearch Form -->
-        <!-- <div class="form-inline">
-          <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-sidebar">
-                <i class="fas fa-search fa-fw"></i>
-              </button>
-            </div>
-          </div>
-        </div> -->
 
-        <!-- Sidebar Menu -->
+
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item menu-open active">
             <ul class="nav nav-treeview">
-                
-                <li class="nav-item">
-                    <a href="<?php echo site_url('AuthDonatur/histori_donasi')?>" class="nav-link">
-                        <img src="<?php echo base_url('aksicendekia/asset/icon/docs.svg')?>" alt="">
-                        <p>Histori Donasi</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo site_url('AuthDonatur/profil_donatur')?>" class="nav-link">
-                        <img src="<?php echo base_url('aksicendekia/asset/icon/orang.svg')?>" alt="">
-                        <p>Profil Pengguna</p>
-                    </a>
-                </li>
-            </ul>
+              <li class="nav-item">
+                  <a href="<?php echo site_url('AuthDonatur/histori_penggalangan')?>" class="nav-link">
+                      <img src="<?php echo base_url('aksicendekia/asset/icon/docs.svg')?>" alt="">
+                      <p>Histori Penggalangan</p>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="<?php echo site_url('AuthDonatur/histori_donasi')?>" class="nav-link">
+                      <img src="<?php echo base_url('aksicendekia/asset/icon/docs.svg')?>" alt="">
+                      <p>Histori Donasi</p>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="<?php echo site_url('AuthDonatur/profil_donatur')?>" class="nav-link">
+                      <img src="<?php echo base_url('aksicendekia/asset/icon/orang.svg')?>" alt="">
+                      <p>Profil Pengguna</p>
+                  </a>
+              </li>
+          </ul>
             </li>
+            <!-- <li class="nav-item"> -->
+            <a href="<?php echo site_url('AuthDonatur/penggalangan')?>" class="nav-link">
+                <button class="btn-galang">
+                    Galang Dana
+                </button>
+            </a>
             <a href="<?php echo site_url('AuthDonatur/logout')?>" class="nav-link">
-                            <button class="btn-galang">
-                                Logout
-                            </button>
-                        </a>
-           
+                <button class="btn-galang">
+                    Logout
+                </button>
+            </a>
             <!-- </li> -->
           </ul>
         </nav>
@@ -123,28 +109,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Main content -->
       <div class="content">
         <div class="container">
+        <?php foreach ($result as $row) {?>
           <div class=" row">
             <!-- /.col-md-6 -->
+            
             <div class="col-lg">
+              
               <div class="donasi">
                 <p class="judul">Nama Kegiatan</p>
-                <p class="point">Festival Ketoprak Mahasiswa UIN Raden Mas Said</p>
+                <p class="point"><?php echo $row->judul; ?></p>
                 <p class="judul">Jumlah Donasi</p>
-                <p class="point">Rp. 20.000</p>
+                <p class="point"><?php echo $row->jumlah_donasi; ?></p>
                 <p class="judul">Tanggal Donasi</p>
-                <p class="point">29 November 2023</p>
+                <p class="point"><?php echo $row->tanggal; ?></p>
+                <p class="judul">Status Pembayaran</p>
+                <p class="point">
+                  <?php if ($row->status == 200){?>
+                    <span class="badge rounded-pill bg-primary"> Berhasil</span>
+                    <?php }elseif ($row->status == 201) {?>
+                    <span class="badge rounded-pill bg-warning"> Pending</span>
+                    <?php }else  {?>
+                    <span class="badge rounded-pill bg-danger"> Expired</span>
+                    <?php }?>
+                    
+
+                </p>
               </div>
-              <div class="donasi">
-                <p class="judul">Nama Kegiatan</p>
-                <p class="point">Festival Ketoprak Mahasiswa UIN Raden Mas Said</p>
-                <p class="judul">Jumlah Donasi</p>
-                <p class="point">Rp. 20.000</p>
-                <p class="judul">Tanggal Donasi</p>
-                <p class="point">29 November 2023</p>
-              </div>
+              
             </div>
             <!-- /.col-md-6 -->
           </div>
+          <?php }?>
           <!-- /.row -->
         </div><!-- /.container-fluid -->
       </div>

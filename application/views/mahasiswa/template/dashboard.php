@@ -100,14 +100,14 @@ foreach ($result as $row) {?>
     <!-- Card -->
 
     <!-- Banner -->
-    <div class="container mt-5">
+    <!-- <div class="container mt-5">
         <div class="banner">
         </div>
-    </div>
+    </div> -->
     <!-- End Banner -->
 
     <!-- Card 2 -->
-    <div class="container mt-5">
+    <!-- <div class="container mt-5">
         <div class="galang">
             <h3 class="mt-5">Kegiatan Yang Baru Ditambahkan</h3>
         </div>
@@ -146,7 +146,7 @@ foreach ($result as $row) {?>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Card 2 -->
     <div class="container mt-5">
         <div class="seeall text-center">

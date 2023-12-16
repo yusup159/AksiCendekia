@@ -157,6 +157,41 @@ class Snap extends CI_Controller {
 			redirect('AuthMahasiswa/galangdana');
 		}
 	}
+	public function finishdonatur()
+	{
+		// Gunakan tanda panah (->) untuk mendeklarasikan array
+		$result = json_decode($this->input->post('result_data'), true);
+		echo"<pre>";
+		echo var_dump($result);
+		echo"<pre>";
+		$nominal = $this->input->post('nominal');
+		$judul = $this->input->post('judul');
+		$alluser_id = $this->input->post('alluser_id');
+		$id_penggalangan = $this->input->post('id_penggalangan');
+		// Pastikan untuk mengganti nilai-nilai di dalam array dengan data yang benar
+		$data = [
+			'nama_kegiatan' => $judul,
+			'order_id' => $result['order_id'],
+			'tanggal' => $result['transaction_time'],
+			'tipe_pembayaran' => $result['payment_type'],
+			'metode_pembayaran' => $result['va_numbers'][0]['va_number'],
+			'bank' => $result['va_numbers'][0]['bank'],
+			'pdf_url' => $result['pdf_url'],
+			'status' => $result['status_code'],
+			'jumlah_donasi' => $nominal,
+			'id_alluser' => $alluser_id,
+			'id_penggalangan' => $id_penggalangan,
+		];
+	
+		// Ganti "$simpan->" menjadi "$this->db->"
+		$simpan = $this->db->insert('transaksi', $data);
+	
+		if ($simpan) {
+			redirect('AuthDonatur/histori_donasi');
+		} else {
+			redirect('AuthDonatur/galangdana');
+		}
+	}
 	
 
 }

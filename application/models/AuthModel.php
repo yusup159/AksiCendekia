@@ -62,9 +62,10 @@ class AuthModel extends CI_Model {
 
         return $query->row(); 
     }
-    public function update_mahasiswa($user_id, $data) {
-        $this->db->where('id', $user_id);
-        $this->db->update('mahasiswa', $data);
+    public function getMahasiswaById($id) {
+        $this->db->where('id', $id);
+        $query = $this->db->get('mahasiswa');
+        return $query->row(); 
     }
     public function getMahasiswaData() {
         $query = $this->db->get('mahasiswa');
@@ -197,7 +198,7 @@ class AuthModel extends CI_Model {
         $this->db->select('*');
         $this->db->from('pengajuan');
         $this->db->join('penggalangan_dana', 'pengajuan.id = penggalangan_dana.id_pengajuan');
-        $this->db->like('judul', $query); // Ubah 'judul' ke kolom yang ingin Anda cari
+        $this->db->like('judul', $query); 
         $query = $this->db->get();
         return $query->result();
     }
@@ -213,6 +214,33 @@ class AuthModel extends CI_Model {
 
         $query = $this->db->get();
         return $query->result();
+    }
+    public function get_alluser_id_by_donatur_id($donatur_id) {
+        $this->db->select('email');
+        $this->db->from('donatur');
+        $this->db->where('id', $donatur_id);
+        $query_donatur = $this->db->get();
+
+        if ($query_donatur->num_rows() > 0) {
+            $donatur_data = $query_donatur->row();
+            $email_donatur = $donatur_data->email;
+
+            $this->db->select('id_alluser');
+            $this->db->from('alluser');
+            $this->db->where('email', $email_donatur);
+            $query_alluser = $this->db->get();
+
+            if ($query_alluser->num_rows() > 0) {
+                $alluser_data = $query_alluser->row();
+                $alluser_id = $alluser_data->id_alluser;
+
+                return $alluser_id;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
     }
     public function get_alluser_id_by_mahasiswa_id($mahasiswa_id) {
         $this->db->select('email');
@@ -284,6 +312,43 @@ class AuthModel extends CI_Model {
             }
         } else {
             // Jika tidak ada hasil dari query mahasiswa
+            return null;
+        }
+    }
+    public function get_transaction_data_by_donatur_id($donatur_id) {
+        $this->db->select('email');
+        $this->db->from('donatur');
+        $this->db->where('id', $donatur_id);
+        $query_donatur = $this->db->get();
+
+        if ($query_donatur->num_rows() > 0) {
+            $donatur_data = $query_donatur->row();
+            $email_donatur = $donatur_data->email;
+
+            $this->db->select('id_alluser');
+            $this->db->from('alluser');
+            $this->db->where('email', $email_donatur);
+            $query_alluser = $this->db->get();
+
+            if ($query_alluser->num_rows() > 0) {
+                $alluser_data = $query_alluser->row();
+                $alluser_id = $alluser_data->id_alluser;
+
+                $this->db->select('*');
+                $this->db->from('transaksi');
+                $this->db->join('penggalangan_dana', 'transaksi.id_penggalangan = penggalangan_dana.id_penggalangan');
+                $this->db->where('transaksi.id_alluser', $alluser_id);
+                $query_transaksi = $this->db->get();
+
+                if ($query_transaksi->num_rows() > 0) {
+                    return $query_transaksi->result();
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
+        } else {
             return null;
         }
     }

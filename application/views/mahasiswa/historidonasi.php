@@ -109,10 +109,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Main content -->
       <div class="content">
         <div class="container">
+        <?php foreach ($result as $row) {?>
           <div class=" row">
             <!-- /.col-md-6 -->
-            <?php foreach ($result as $row) {?>
+            
             <div class="col-lg">
+              
               <div class="donasi">
                 <p class="judul">Nama Kegiatan</p>
                 <p class="point"><?php echo $row->judul; ?></p>
@@ -133,10 +135,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 </p>
               </div>
-              <?php }?>
+              
             </div>
             <!-- /.col-md-6 -->
           </div>
+          <?php }?>
           <!-- /.row -->
         </div><!-- /.container-fluid -->
       </div>

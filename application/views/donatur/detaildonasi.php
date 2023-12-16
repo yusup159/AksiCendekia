@@ -17,7 +17,7 @@
     <!-- Navigasi -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="./mainpage.html">
+            <a class="navbar-brand" href="<?php echo site_url('AuthDonatur/dashboard')?>">
                 <img src="<?php echo base_url('aksicendekia/asset/foto/logoAksiCendekia.svg')?>" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -46,69 +46,80 @@
                     <img src="./asset/icon/simpan.svg" alt="">
                 </a> -->
                 <a href="<?php echo site_url('AuthDonatur/profil_donatur')?>">
-                    <img class="profile" src="<?php echo base_url('aksicendekia/asset/foto/profile.jpg')?>" alt="">
-                </a>
+                
+                <img class="profile" src="<?php echo ($donatur->foto != null) ? base_url('Asset/foto_donatur/' . $donatur->foto) : base_url('aksicendekia/asset/foto/belum_ada_foto.jpg'); ?>" alt="">
+            </a>
             </div>
         </div>
     </nav>
     <!-- End Navigasi -->
 
-    <!-- Hero -->
     <div class="detail-donasi mt-5">
         <div class="container">
             <div class="row">
+            <?php foreach ($dana as $row) { ?>
                 <div class="col-lg-7 donasi-kiri">
-                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <?php if (!empty($row->foto1)): ?>
                             <div class="carousel-item active satu">
-                                <img src="<?php echo base_url('aksicendekia/asset/foto/content1.png')?>" class="d-block w-100" alt="...">
+                                <img src="<?php echo base_url('foto1_pengajuan/' . $row->foto1); ?>" class="d-block w-100" alt="...">
                             </div>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($row->foto2)): ?>
                             <div class="carousel-item dua">
-                                <img src="<?php echo base_url('aksicendekia/asset/foto/content2.png')?>" class="d-block w-100" alt="...">
+                                <img src="<?php echo base_url('foto2_pengajuan/' . $row->foto2); ?>" class="d-block w-100" alt="...">
                             </div>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($row->foto3)): ?>
                             <div class="carousel-item tiga">
-                                <img src="<?php echo base_url('aksicendekia/asset/foto/herokanan.png')?>" class="d-block w-100" alt="...">
+                                <img src="<?php echo base_url('foto3_pengajuan/' . $row->foto3); ?>" class="d-block w-100" alt="...">
                             </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                        <?php endif; ?>
                     </div>
+                        
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                        
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                        
                     <div class="text">
-                        <h2>Event Festival Ketoprak Mahasiswa
-                            UIN Raden Mas Said</h2>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident illo exercitationem ab,
-                            quam laudantium rem consectetur corrupti dolore qui sapiente adipisci, labore ad. At impedit
-                            eos illo in officiis fugit magni amet ullam assumenda, nam beatae molestias! Odio, soluta
-                            incidunt.</p>
+                        <h2><?php echo $row->judul ?></h2>
+                        <p><?php echo $row->deskripsi ?></p>
                     </div>
                 </div>
                 <div class="col-lg-5 donasi-kanan mt-6">
                     <div class="deskripsi-kegiatan">
                         <h4>Informasi Umum</h4>
+                        
+                        
                         <p class="judul">Pendanaan Dimulai : </p>
-                        <p class="kegiatan">28 September 2023 </p>
+                        <p class="kegiatan"><?php echo $row->tanggal_mulai ?> </p>
                         <p class="judul">Pendanaan Berakhir : </p>
-                        <p class="kegiatan">28 November 2023 </p>
+                        <p class="kegiatan"><?php echo $row->tanggal_berakhir ?> </p>
                         <p class="judul">Penyelenggara : </p>
-                        <p class="kegiatan">BEM UIN Raden Mas Said </p>
+                        <p class="kegiatan"><?php echo $row->UKM ?> </p>
                         <p class="judul">Dana Yang Dibutuhkan : </p>
-                        <p class="kegiatan">Rp. 130.000.000 </p>
+                        <p class="kegiatan"><?php echo $row->donasi ?> </p>
                         <p class="judul">Dana Terkumpul : </p>
-                        <p class="kegiatan">Rp. 120.000.000 </p>
+                        <p class="kegiatan"><?php echo $row->jumlahdonasi ?> </p>
+                        
                     </div>
-                    <a href="<?php echo site_url('AuthDonatur/galangdana')?>">
+                    
+                    <a href="<?php echo site_url('AuthDonatur/galangdana/'.$row->id_penggalangan) ?>">
                         <button class="btn btn-light btn-bayar mt-4">
                             <img src="./asset/icon/arrow.svg" alt="">
                             Lakukan Donasi</button></a>
                 </div>
+                <?php }?>
             </div>
             <div class="row">
                 <div class="col-lg">
@@ -120,7 +131,7 @@
                         <div class="bungkus-galang">
                             <div class="row">
                                 <div class="card col-lg-4 mb-3">
-                                    <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
+                                    <img src="./asset/foto/konser.png" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                                         <h5 class="card-title">Festival Pentas Seni Akhir Tahun
@@ -133,7 +144,7 @@
                                     </div>
                                 </div>
                                 <div class="card col-lg-4 mb-3">
-                                    <img src=" <?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
+                                    <img src=" ./asset/foto/konser.png" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                                         <h5 class="card-title">Festival Pentas Seni Akhir Tahun
@@ -146,7 +157,7 @@
                                     </div>
                                 </div>
                                 <div class="card col-lg-4 mb-3">
-                                    <img src=" <?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
+                                    <img src=" ./asset/foto/konser.png" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                                         <h5 class="card-title">Festival Pentas Seni Akhir Tahun

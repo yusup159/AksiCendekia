@@ -72,7 +72,12 @@ class AuthDonatur extends CI_Controller {
         if (!$this->session->userdata('id')) {
             redirect('AuthDonatur/index');
         }
-		$this->load->view('donatur/template/dashboard');
+        $user_id = $this->session->userdata('id');
+        $donatur = $this->AuthModel->get_donatur_by_id($user_id);
+        $data['donatur'] = $donatur;
+        $data['result'] = $this->AuthModel->getJoinedData();
+
+		$this->load->view('donatur/template/dashboard',$data);
 	}
     public function logout()
     {
@@ -86,8 +91,8 @@ class AuthDonatur extends CI_Controller {
             redirect('AuthDonatur/index');
         }
         $user_id = $this->session->userdata('id');
-        $mahasiswa_data = $this->AuthModel->get_donatur_by_id($user_id);
-        $data['donatur'] = $mahasiswa_data;
+        $donatur_data = $this->AuthModel->get_donatur_by_id($user_id);
+        $data['donatur'] = $donatur_data;
         $this->load->view('donatur/profil', $data);
     }
     public function edit_profil_donatur(){
@@ -100,26 +105,46 @@ class AuthDonatur extends CI_Controller {
         if (!$this->session->userdata('id')) {
             redirect('AuthDonatur/index');
         }
-        $this->load->view('donatur/historidonasi');
+        $id_donatur = $this->session->userdata('id');
+        $result = $this->AuthModel->get_transaction_data_by_donatur_id($id_donatur);
+        $data['result'] = $result;
+        $this->load->view('donatur/historidonasi',$data);
     }
-    public function detail_donasi(){
+    public function detail_donasi($id_penggalangan){
         if (!$this->session->userdata('id')) {
             redirect('AuthDonatur/index');
         }
-        $this->load->view('donatur/detaildonasi');
+        $user_id = $this->session->userdata('id');
+        $donatur_data = $this->AuthModel->get_donatur_by_id($user_id);
+        $data['donatur'] = $donatur_data;
+        $data['dana'] = $this->AuthModel->get_data_penggalangan($id_penggalangan);
+        $this->load->view('donatur/detaildonasi',$data);
     }
 
 
-    public function galangdana(){
+    public function galangdana($id_penggalangan){
         if (!$this->session->userdata('id')) {
             redirect('AuthDonatur/index');
         }
-        $this->load->view('donatur/galangdana');
+        $user_id = $this->session->userdata('id');
+        
+        $alluser_id = $this->AuthModel->get_alluser_id_by_donatur_id($user_id);
+        $data['alluser_id'] = $alluser_id;
+        $data['danadonasi'] = $this->AuthModel->get_data_penggalangan($id_penggalangan);
+        $this->load->view('donatur/galangdana',$data);
     }
     public function pembayaran(){
         if (!$this->session->userdata('id')) {
             redirect('AuthDonatur/index');
         }
         $this->load->view('donatur/pembayaran');
+    }
+    public function search() {
+        $query = $this->input->get('query');
+        $user_id = $this->session->userdata('id');
+        $donatur_data = $this->AuthModel->get_donatur_by_id($user_id);
+        $data['donatur'] = $donatur_data;
+        $data['result'] = $this->AuthModel->searchData($query);
+        $this->load->view('donatur/search', $data);
     }
 }

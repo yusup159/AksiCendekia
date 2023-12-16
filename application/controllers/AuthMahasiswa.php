@@ -132,9 +132,8 @@ class AuthMahasiswa extends CI_Controller {
         if (!$this->session->userdata('id')) {
             redirect('AuthMahasiswa/index');
         }
-        $user_id = $this->session->userdata('id');
-        $mahasiswa_data = $this->AuthModel->get_mahasiswa_by_id($user_id);
-        $data['mahasiswa'] = $mahasiswa_data;
+        $id = $this->session->userdata('id');
+        $data['mahasiswa'] = $this->AuthModel->getMahasiswaById($id);
         $this->load->view('mahasiswa/editprofil',$data);
     }
 

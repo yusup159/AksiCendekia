@@ -148,8 +148,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         <p class="form-control"><?php echo $mahasiswa->nim; ?></p>
                                                     </div>
                                                    
-                                                        <a class="btn btn-simpan" href="<?php echo site_url('AuthMahasiswa/edit_profil_mahasiswa')?>">Edit
-                                                            Data</a>
+                                                    <a class="btn btn-simpan" href="<?php echo site_url('AuthMahasiswa/edit_profil_mahasiswa/'. $mahasiswa->id)?>">Edit Data</a>
+
                                                  
                                                 </div>
                                             </div>

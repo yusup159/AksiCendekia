@@ -18,7 +18,7 @@ body{
 
 .donasi{
     background-color: white;
-    height: 250px;
+    max-height: 500px;
     border-radius: 20px;
     box-shadow: 1px 1px 20px #eeeeee;
     padding: 20px 40px;
