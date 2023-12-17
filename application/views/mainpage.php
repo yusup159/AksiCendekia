@@ -127,7 +127,7 @@
         <div class="bungkus-galang">
             <div class="row">
                 <div class="card col-lg-4 mb-3">
-                    <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
+                    <img src="<?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="..." style="height: 200px;">
                     <div class="card-body">
                         <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                         <h5 class="card-title">Festival Pentas Seni Akhir Tahun
@@ -140,7 +140,7 @@
                     </div>
                 </div>
                 <div class="card col-lg-4 mb-3">
-                    <img src=" <?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
+                    <img src=" <?php echo base_url('aksicendekia/asset/foto/ketoprak.jpg')?>" class="card-img-top" alt="..." style="height: 200px;">
                     <div class="card-body">
                         <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                         <h5 class="card-title">Festival Pentas Seni Akhir Tahun
@@ -153,7 +153,7 @@
                     </div>
                 </div>
                 <div class="card col-lg-4 mb-3">
-                    <img src=" <?php echo base_url('aksicendekia/asset/foto/konser.png')?>" class="card-img-top" alt="...">
+                    <img src=" <?php echo base_url('aksicendekia/asset/foto/gelarkarya.jpg')?>" class="card-img-top" alt="..." style="height: 200px;">
                     <div class="card-body">
                         <p class="penyelenggara">BEM Universitas Amikom Yogyakarta.</p>
                         <h5 class="card-title">Festival Pentas Seni Akhir Tahun

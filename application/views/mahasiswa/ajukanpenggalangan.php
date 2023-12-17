@@ -152,7 +152,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </div>
                             <p>*Agar tampilan terlihat lebih menarik, disarankan menggunakan ukuran 400 * 600 </p>
 
-                                <button class="btn-penggalagan mb-5" type="submit">
+                                <button class="btn-penggalagan mb-5" onclick="return confirm('Pastikan Mengisi Data Dengan Benar.!')" type="submit">
                                     Lakukan Penggalangan
                                 </button>
                             <!-- /.col-md-6 -->

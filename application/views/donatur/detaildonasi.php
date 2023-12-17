@@ -115,7 +115,7 @@
                     </div>
                     
                     <a href="<?php echo site_url('AuthDonatur/galangdana/'.$row->id_penggalangan) ?>">
-                        <button class="btn btn-light btn-bayar mt-4">
+                        <button onclick="return confirm('Ingin Melakukan Donasi?')" class="btn btn-light btn-bayar mt-4">
                             <img src="./asset/icon/arrow.svg" alt="">
                             Lakukan Donasi</button></a>
                 </div>
@@ -124,7 +124,7 @@
             <div class="row">
                 <div class="col-lg">
                     <!-- Card -->
-                    <div class="container">
+                    <!-- <div class="container">
                         <div class="galang mt-5">
                             <h1>Kegiatan Serupa</h1>
                         </div>
@@ -171,7 +171,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Card -->
 
                 </div>

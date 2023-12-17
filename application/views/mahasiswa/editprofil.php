@@ -165,13 +165,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Password Saat Ini</label>
-                                                        <input class="form-control" type="password" name="password" placeholder="<?php echo $mahasiswa->asal_kampus?>" value="<?php echo set_value('asal_kampus', $mahasiswa->asal_kampus)?>">
+                                                        <input class="form-control" type="password" name="password" >
                                                         
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col d-flex mb-3">
-                                                <button class="btn btn-simpan" type="submit">Simpan Perubahan</button>
+                                                <button class="btn btn-simpan"onclick="return confirm('Yakin Ingin Merubah Data Pribadi?')"  type="submit">Simpan Perubahan</button>
                                             </div>
                                         </div>
                                     </div>

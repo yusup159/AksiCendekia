@@ -18,7 +18,7 @@
       <div class="container">
           <div class="nominal">
               <h5>Masukan Nominal Donasi</h3>
-              <form id="payment-form" method="post" action="<?=site_url('/snap/finishdonatur')?>">
+              <form id="payment-form" method="post" action="<?=site_url('/Snap/finishdonatur')?>">
               <input type="hidden" name="alluser_id" value="<?php echo $alluser_id ?>">
               <?php foreach ($danadonasi as $row) { ?>
                   <input type="hidden" name="result_type" id="result-type" value="">

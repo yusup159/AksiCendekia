@@ -134,7 +134,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Main content -->
             <div class="content">
                 <div class="container">
-                <?php foreach ($pengajuan as $item): ?>
+                <?php if (!empty($pengajuan)): ?>
+   <?php foreach ($pengajuan as $item): ?>
+      <div class=" row">
+      <?php foreach ($pengajuan as $item): ?>
                     <div class="row">
                         <!-- /.col-md-6 -->
                         <div class="col-lg">
@@ -173,6 +176,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <!-- /.col-md-6 -->
                     </div>
                 <?php endforeach; ?>
+      </div>
+   <?php endforeach; ?>
+<?php else: ?>
+    <p style="text-align: center;">Tidak ada histori penggalangan.</p>
+<?php endif; ?>
+
+               
                                 
                     <!-- /.row -->
                 </div><!-- /.container-fluid -->

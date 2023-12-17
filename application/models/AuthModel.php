@@ -110,6 +110,20 @@ class AuthModel extends CI_Model {
 
         return false;
     }
+    public function edit_profil_donatur($username, $email, $nama, $alamat, $foto) {
+        $data = array(
+            'username' => $username,
+            'email' => $email,
+            'nama' => $nama,
+            'alamat' => $alamat,
+            'foto' => $foto
+        );
+
+        
+        $this->db->where('id', $this->session->userdata('id'));
+        $this->db->update('donatur', $data);
+    }
+    
     public function getDonaturData() {
         $query = $this->db->get('donatur');
         return $query->result();

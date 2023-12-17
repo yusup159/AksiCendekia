@@ -47,12 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
             <li class="nav-item menu-open active">
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                  <a href="<?php echo site_url('AuthDonatur/histori_penggalangan')?>" class="nav-link">
-                      <img src="<?php echo base_url('aksicendekia/asset/icon/docs.svg')?>" alt="">
-                      <p>Histori Penggalangan</p>
-                  </a>
-              </li>
+              
               <li class="nav-item">
                   <a href="<?php echo site_url('AuthDonatur/histori_donasi')?>" class="nav-link">
                       <img src="<?php echo base_url('aksicendekia/asset/icon/docs.svg')?>" alt="">
@@ -68,11 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </ul>
             </li>
             <!-- <li class="nav-item"> -->
-            <a href="<?php echo site_url('AuthDonatur/penggalangan')?>" class="nav-link">
-                <button class="btn-galang">
-                    Galang Dana
-                </button>
-            </a>
+            
             <a href="<?php echo site_url('AuthDonatur/logout')?>" class="nav-link">
                 <button class="btn-galang">
                     Logout
@@ -109,7 +100,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Main content -->
       <div class="content">
         <div class="container">
-        <?php foreach ($result as $row) {?>
+        <?php if (!empty($result)): ?>
+   <?php foreach ($result as $row): ?>
+      <div class=" row">
+      <?php foreach ($result as $row) {?>
           <div class=" row">
             <!-- /.col-md-6 -->
             
@@ -140,6 +134,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- /.col-md-6 -->
           </div>
           <?php }?>
+      </div>
+   <?php endforeach; ?>
+<?php else: ?>
+  <p style="text-align: center;">Tidak ada histori donasi.</p>
+<?php endif; ?>
+
+        
           <!-- /.row -->
         </div><!-- /.container-fluid -->
       </div>

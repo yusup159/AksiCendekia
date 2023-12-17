@@ -130,21 +130,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg">
                             <div class="donasi">
                                 <div class="row"></div>
-                                <form class="form" novalidate="">
+                                <form class="form" enctype="multipart/form-data"  method="post" novalidate="" action="<?php echo site_url('AuthDonatur/edit_profil_dntr') ?>">
                                     <div class="row">
                                         <div class="col">
                                             <div class="row">
                                                 <div class="col">
-                                                    <img class="profile mb-3" src="<?php echo base_url('aksicendekia/asset/foto/profile.jpg')?>" alt=""><br>
-                                                    <input type="file" class="sellect-photo mb-4" name="" id="">
+                                                <img class="profile mb-3" src="<?php echo ($donatur->foto != null) ? base_url('Asset/foto_donatur/' . $donatur->foto) : base_url('aksicendekia/asset/foto/belum_ada_foto.jpg'); ?>" alt="">
+                                                    <input type="file" class="sellect-photo mb-4" name="foto" id="">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Username</label>
-                                                        <input class="form-control" type="text" name="username"
-                                                            placeholder="Username" value="Adiba Andani">
+                                                        <input class="form-control" type="text" name="username" placeholder="<?php echo $donatur->username?>" value="<?php echo set_value('username', $donatur->username)?>">
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -152,26 +152,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Email</label>
-                                                        <input class="form-control" type="text"
-                                                            value="adibaandani@gmail.com" placeholder="Alamat Email">
+                                                        <input class="form-control" type="text" name="email" placeholder="<?php echo $donatur->email?>" value="<?php echo set_value('email', $donatur->email)?>">
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label>Asal Universitas</label>
-                                                        <input class="form-control" type="text"
-                                                            placeholder="Asal Universitas" value="UIN Raden Mas Said">
+                                                        <label>Nama Lengkap</label>
+                                                        <input class="form-control" type="text" name="nama" placeholder="<?php echo $donatur->nama?>" value="<?php echo set_value('nama', $donatur->nama)?>">
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label>Nomor Induk Mahasiswa</label>
-                                                        <input class="form-control" type="text"
-                                                            placeholder="Nomor Induk Mahasiswa" value="21.12.2100">
+                                                        <label>Alamat</label>
+                                                        <input class="form-control" type="text" name="alamat" placeholder="<?php echo $donatur->alamat?>" value="<?php echo set_value('alamat', $donatur->alamat)?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -183,31 +182,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Password Saat Ini</label>
-                                                        <input class="form-control" type="password" value="wadawwadaw"
-                                                            placeholder="••••••">
+                                                        <input class="form-control" type="password" name="password">
+                                                        
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label>Password Baru</label>
-                                                        <input class="form-control" type="password"
-                                                            placeholder="••••••">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label>Konfirmasi Password Baru<span
-                                                                class="d-none d-xl-inline">Password</span></label>
-                                                        <input class="form-control" type="password"
-                                                            placeholder="••••••"></div>
                                                 </div>
                                             </div>
                                             <div class="col d-flex mb-3">
-                                                <button class="btn btn-simpan" type="submit">Simpan Perubahan</button>
+                                                <button onclick="return confirm('Yakin Akan Mengubah Data Ini?')" class="btn btn-simpan" type="submit">Simpan Perubahan</button>
                                             </div>
                                         </div>
                                     </div>

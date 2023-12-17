@@ -115,7 +115,7 @@
                     </div>
                     
                     <a href="<?php echo site_url('AuthMahasiswa/galangdana/'.$row->id_penggalangan) ?>">
-                        <button class="btn btn-light btn-bayar mt-4">
+                        <button onclick="return confirm('Ingin Melakukan Donasi?')" class="btn btn-light btn-bayar mt-4">
                             <img src="./asset/icon/arrow.svg" alt="">
                             Lakukan Donasi</button></a>
                 </div>
