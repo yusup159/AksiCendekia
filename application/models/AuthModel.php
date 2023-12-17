@@ -71,6 +71,19 @@ class AuthModel extends CI_Model {
         $query = $this->db->get('mahasiswa');
         return $query->result();
     }
+    public function edit_profil($username, $email, $asal_kampus, $nim, $foto) {
+        $data = array(
+            'username' => $username,
+            'email' => $email,
+            'asal_kampus' => $asal_kampus,
+            'nim' => $nim,
+            'foto' => $foto
+        );
+
+        
+        $this->db->where('id', $this->session->userdata('id'));
+        $this->db->update('mahasiswa', $data);
+    }
    
     
     

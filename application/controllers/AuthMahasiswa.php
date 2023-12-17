@@ -138,59 +138,39 @@ class AuthMahasiswa extends CI_Controller {
     }
 
     public function edit_profil_mhs() {
-        if (!$this->session->userdata('id')) {
-            redirect('AuthMahasiswa/index');
-        }
-    
-        $this->load->model('AuthModel');
-        $user_id = $this->session->userdata('id');
-        $mahasiswa_data = $this->AuthModel->get_mahasiswa_by_id($user_id);
-    
-        // Validasi Form
+        // Lakukan validasi form jika diperlukan
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('asal_kampus', 'Asal Kampus', 'required');
-        $this->form_validation->set_rules('nim', 'NIM', 'required');
-    
-        // Jika ingin mengubah password, tambahkan validasi untuk password baru
-        if ($this->input->post('password_baru') || $this->input->post('konfirmasi_password_baru')) {
-            $this->form_validation->set_rules('password', 'Password Saat Ini', 'required');
-            $this->form_validation->set_rules('password_baru', 'Password Baru', 'required');
-            $this->form_validation->set_rules('konfirmasi_password_baru', 'Konfirmasi Password Baru', 'required|matches[password_baru]');
-        }
-    
+        $this->form_validation->set_rules('asal_kampus', 'Asal Universitas', 'required');
+        $this->form_validation->set_rules('nim', 'Nomor Induk Mahasiswa', 'required');
+
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('mahasiswa/editprofil', $mahasiswa_data);
+            // Jika validasi gagal, tampilkan kembali form dengan error
+            $this->load->view('mahasiswa/edit_profil_mahasiswa');
         } else {
-            $data = array(
-                'username' => $this->input->post('username'),
-                'email' => $this->input->post('email'),
-                'asal_kampus' => $this->input->post('asal_kampus'),
-                'nim' => $this->input->post('nim'),
-            );
-    
-            if ($this->input->post('password_baru')) {
-                $data['password'] = password_hash($this->input->post('password_baru'), PASSWORD_DEFAULT);
+            // Ambil data dari form
+            $username = $this->input->post('username');
+            $email = $this->input->post('email');
+            $asal_kampus = $this->input->post('asal_kampus');
+            $nim = $this->input->post('nim');
+
+            // Upload foto jika ada
+            $config['upload_path'] = './Asset/foto_mahasiswa/';
+            $config['allowed_types'] = 'jpg|jpeg|png';
+            $config['max_size'] = 10048; // 2MB max size
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) {
+                $foto = $this->upload->data('file_name');
+            } else {
+                $foto = $this->input->post('foto_lama'); // Jika foto tidak diupload, gunakan foto lama
             }
-    
-            if ($_FILES['foto']['name'] != '') {
-                $config['upload_path'] = './Asset/foto_mahasiswa/';
-                $config['allowed_types'] = 'gif|jpg|jpeg|png';
-                $config['max_size'] = 10048; // 2MB
-    
-                $this->load->library('upload', $config);
-    
-                if ($this->upload->do_upload('foto')) {
-                    $upload_data = $this->upload->data();
-                    $data['foto'] = $upload_data['file_name'];
-                } else {
-                    $this->session->set_flashdata('error', $this->upload->display_errors());
-                    redirect('AuthMahasiswa/edit_profil_mahasiswa');
-                }
-            }
-    
-            $this->AuthModel->update_mahasiswa($user_id, $data);
-    
+
+            // Panggil model untuk menyimpan perubahan
+            $this->AuthModel->edit_profil($username, $email, $asal_kampus, $nim, $foto);
+
+            // Redirect atau tampilkan pesan sukses
             redirect('AuthMahasiswa/profil_mahasiswa');
         }
     }

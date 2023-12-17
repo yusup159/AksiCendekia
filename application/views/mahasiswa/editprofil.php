@@ -113,13 +113,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg">
                             <div class="donasi">
                                 <div class="row"></div>
-                                <form class="form" novalidate="" action="<?php echo site_url('AuthMahasiswa/editprofil_mahasiswa') ?>">
+                                <form class="form" enctype="multipart/form-data"  method="post" novalidate="" action="<?php echo site_url('AuthMahasiswa/edit_profil_mhs') ?>">
                                     <div class="row">
                                         <div class="col">
                                             <div class="row">
                                                 <div class="col">
                                                 <img class="profile mb-3" src="<?php echo ($mahasiswa->foto != null) ? base_url('Asset/foto_mahasiswa/' . $mahasiswa->foto) : base_url('aksicendekia/asset/foto/belum_ada_foto.jpg'); ?>" alt="">
-                                                    <input type="file" class="sellect-photo mb-4" name="" id="">
+                                                    <input type="file" class="sellect-photo mb-4" name="foto" id="">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -165,7 +165,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Password Saat Ini</label>
-                                                        <input class="form-control" type="password" name="asal_kampus" placeholder="<?php echo $mahasiswa->asal_kampus?>" value="<?php echo set_value('asal_kampus', $mahasiswa->asal_kampus)?>">
+                                                        <input class="form-control" type="password" name="password" placeholder="<?php echo $mahasiswa->asal_kampus?>" value="<?php echo set_value('asal_kampus', $mahasiswa->asal_kampus)?>">
                                                         
                                                     </div>
                                                 </div>
