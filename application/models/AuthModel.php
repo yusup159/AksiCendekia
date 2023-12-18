@@ -68,9 +68,11 @@ class AuthModel extends CI_Model {
         return $query->row(); 
     }
     public function getMahasiswaData() {
+        $this->db->order_by('created_at', 'DESC');
         $query = $this->db->get('mahasiswa');
         return $query->result();
     }
+    
     public function edit_profil($username, $email, $asal_kampus, $nim, $foto) {
         $data = array(
             'username' => $username,
@@ -125,9 +127,11 @@ class AuthModel extends CI_Model {
     }
     
     public function getDonaturData() {
+        $this->db->order_by('created_at', 'DESC');
         $query = $this->db->get('donatur');
         return $query->result();
     }
+    
     public function get_donatur_by_id($user_id) {
         $this->db->select('*');
         $this->db->from('donatur');
@@ -153,9 +157,11 @@ class AuthModel extends CI_Model {
         return $query->result();
     }
     public function getPengajuanData() {
+        $this->db->order_by('created_at', 'DESC'); // Mengurutkan berdasarkan tanggal terbaru
         $query = $this->db->get('pengajuan');
         return $query->result();
     }
+    
     public function getPengajuanById($id) {
         $this->db->where('id', $id);
         $query = $this->db->get('pengajuan');
@@ -189,9 +195,11 @@ class AuthModel extends CI_Model {
         return $query->result();
     }
     public function getPenggalanganData() {
+        $this->db->order_by('created_at', 'DESC');
         $query = $this->db->get('penggalangan_dana');
         return $query->result();
     }
+    
     public function getPenggalanganById($id) {
         $this->db->where('id_penggalangan', $id);
         $query = $this->db->get('penggalangan_dana');
@@ -218,10 +226,13 @@ class AuthModel extends CI_Model {
         $this->db->select('pengajuan.*, penggalangan_dana.*'); 
         $this->db->from('pengajuan');
         $this->db->join('penggalangan_dana', 'pengajuan.id = penggalangan_dana.id_pengajuan');
+        $this->db->order_by('penggalangan_dana.created_at', 'DESC'); 
         $this->db->limit($limit, $start);
+        
         $query = $this->db->get();
         return $query->result_array();
     }
+    
     
     public function countPenggalangan(){
         return $this->db->get('penggalangan_dana')->num_rows();
@@ -247,6 +258,28 @@ class AuthModel extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    public function getFullData() {
+        $this->db->select('pd.*, t.*, m.*');
+        $this->db->from('alluser AS au');
+        $this->db->join('penggalangan_dana AS pd', 'au.id_alluser = pd.id_pengajuan');
+        $this->db->join('transaksi AS t', 'au.id_alluser = t.id_alluser');
+        $this->db->join('mahasiswa AS m', 'au.id_mahasiswa = m.id');
+        $this->db->order_by('t.created_at', 'DESC'); // Menambahkan perintah ORDER BY
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
+    public function getFullDataDonatur() {
+        $this->db->select('pd.*, t.*, d.*');
+        $this->db->from('alluser AS au');
+        $this->db->join('penggalangan_dana AS pd', 'au.id_alluser = pd.id_pengajuan');
+        $this->db->join('transaksi AS t', 'au.id_alluser = t.id_alluser');
+        $this->db->join('donatur AS d', 'au.id_donatur = d.id');
+        $this->db->order_by('t.created_at', 'DESC'); // Menambahkan perintah ORDER BY
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
     public function get_alluser_id_by_donatur_id($donatur_id) {
         $this->db->select('email');
         $this->db->from('donatur');
@@ -347,6 +380,7 @@ class AuthModel extends CI_Model {
             return null;
         }
     }
+    
     public function get_transaction_data_by_donatur_id($donatur_id) {
         $this->db->select('email');
         $this->db->from('donatur');

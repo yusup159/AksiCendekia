@@ -109,49 +109,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Main content -->
       <div class="content">
         <div class="container">
-        <?php if (!empty($result)): ?>
-   <?php foreach ($result as $row): ?>
-      <div class=" row">
-      <?php foreach ($result as $row) {?>
-          <div class=" row">
-            <!-- /.col-md-6 -->
-            
-            <div class="col-lg">
-              
-              <div class="donasi">
-                <p class="judul">Nama Kegiatan</p>
-                <p class="point"><?php echo $row->judul; ?></p>
-                <p class="judul">Jumlah Donasi</p>
-                <p class="point"><?php echo $row->jumlah_donasi; ?></p>
-                <p class="judul">Tanggal Donasi</p>
-                <p class="point"><?php echo $row->tanggal; ?></p>
-                <p class="judul">Status Pembayaran</p>
-                <p class="point">
-                  <?php if ($row->status == 200){?>
-                    <span class="badge rounded-pill bg-primary"> Berhasil</span>
-                    <?php }elseif ($row->status == 201) {?>
-                    <span class="badge rounded-pill bg-warning"> Pending</span>
-                    <?php }else  {?>
-                    <span class="badge rounded-pill bg-danger"> Expired</span>
-                    <?php }?>
-                    
-
-                </p>
-              </div>
-              
-            </div>
-            <!-- /.col-md-6 -->
-          </div>
-          <?php }?>
-      </div>
-   <?php endforeach; ?>
-<?php else: ?>
-   <p style="text-align: center;">Tidak ada histori donasi.</p>
-<?php endif; ?>
-
-        
-          <!-- /.row -->
-        </div><!-- /.container-fluid -->
+          <?php if (!empty($result)): ?>
+              <?php foreach ($result as $row): ?>
+                  <div class="row">
+                      <div class="col-lg">
+                          <div class="donasi">
+                              <p class="judul">Nama Kegiatan</p>
+                              <p class="point"><?php echo $row->judul; ?></p>
+                              <p class="judul">Jumlah Donasi</p>
+                              <p class="point"><?php echo $row->jumlah_donasi; ?></p>
+                              <p class="judul">Tanggal Donasi</p>
+                              <p class="point"><?php echo $row->tanggal; ?></p>
+                              <p class="judul">Status Pembayaran</p>
+                              <p class="point">
+                                  <?php if ($row->status == 200): ?>
+                                      <span class="badge rounded-pill bg-primary">Berhasil</span>
+                                  <?php elseif ($row->status == 201): ?>
+                                      <span class="badge rounded-pill bg-warning">Pending</span>
+                                  <?php else: ?>
+                                      <span class="badge rounded-pill bg-danger">Expired</span>
+                                  <?php endif; ?>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              <?php endforeach; ?>
+          <?php else: ?>
+              <p style="text-align: center;">Tidak ada histori donasi.</p>
+          <?php endif; ?>
+  </div>
+  <!-- /.container-fluid -->
       </div>
       <!-- /.content -->
     </div>

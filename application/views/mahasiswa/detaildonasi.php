@@ -121,10 +121,10 @@
                 </div>
                 <?php }?>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg">
                     <!-- Card -->
-                    <div class="container">
+                    <!-- <div class="container">
                         <div class="galang mt-5">
                             <h1>Kegiatan Serupa</h1>
                         </div>
@@ -177,7 +177,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 
     <!-- End Hero -->
 

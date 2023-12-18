@@ -203,5 +203,41 @@ class AuthAdmin extends CI_Controller {
         $this->AuthModel->deletePenggalangan($id);
         redirect('AuthAdmin/data_penggalangan');
     }
+    public function transaksimhs() {
+        
+        $data['fullData'] = $this->AuthModel->getFullData();
+        
+        
+        $this->load->view('admin/template/header');
+        $this->load->view('admin/template/sidebar');
+        $this->load->view('admin/traksaksimahasiswa', $data);
+        $this->load->view('admin/template/footer');
+    }
+    public function delete_transaksimhs($id){
+        if (!$this->session->userdata('id_alluser')) {
+            redirect('AuthAdmin/index');
+        }
+        $this->AuthModel->delete('transaksi', 'id_transaksi',$id);
+        redirect('AuthAdmin/transaksimhs');
+        
+    }
+    public function transaksidntr() {
+        
+        $data['fullData'] = $this->AuthModel->getFullDataDonatur();
+        
+        
+        $this->load->view('admin/template/header');
+        $this->load->view('admin/template/sidebar');
+        $this->load->view('admin/transaksidonatur', $data);
+        $this->load->view('admin/template/footer');
+    }
+    public function delete_transaksidntr($id){
+        if (!$this->session->userdata('id_alluser')) {
+            redirect('AuthAdmin/index');
+        }
+        $this->AuthModel->delete('transaksi', 'id_transaksi',$id);
+        redirect('AuthAdmin/transaksidntr');
+        
+    }
     
 }

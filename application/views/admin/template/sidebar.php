@@ -35,6 +35,8 @@
                       <li><a href="<?php echo site_url('AuthAdmin/data_pengajuan')?>">Data Pengajuan</a></li>
                       <li><a href="<?php echo site_url('AuthAdmin/data_mahasiswa')?>">Data Mahasiswa</a></li>
                       <li><a href="<?php echo site_url('AuthAdmin/data_donatur')?>">Data Donatur</a></li>
+                      <li><a href="<?php echo site_url('AuthAdmin/transaksidntr')?>">Transaksi Donatur</a></li>
+                      <li><a href="<?php echo site_url('AuthAdmin/transaksimhs')?>">Transaksi Mahasiswa</a></li>
                     </ul>
                   </li>
                 </ul>
