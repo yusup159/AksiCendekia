@@ -29,9 +29,9 @@
                 <td><a href="<?php echo base_url('dokumen_pengajuan/' .$row->dokumen); ?>" download>
                     <img src="<?php echo base_url('aksicendekia/asset/icon/folder.svg'); ?>" class="mr-1" alt="">File Pengajuan</a></td>
                 <td><?php echo $row->status; ?></td>
-                <td><a href="<?php echo site_url('AuthAdmin/delete_pengajuan/'.$row->id);?>" onclick="return confirm('Yakin Akan Hapus Data Ini?')" class="btn btn-danger"><div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div> hapus</a></td>
-                <td><a href="<?php echo site_url('AuthAdmin/tolak/'.$row->id);?>" onclick="return confirm('Yakin untuk menolak Data Ini?')" class="btn btn-warning"><div class="btn btn-warning btn-sm"><i class="fa fa-trash"></i></div> Tolak</a></td>
-                <td><a href="<?php echo site_url('AuthAdmin/terima/'.$row->id);?>" onclick="return confirm('Yakin untuk menerima  Data Ini?')" class="btn btn-primary"><div class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></div> Terima</a></td>
+                <td><a href="<?php echo site_url('AuthAdmin/delete_pengajuan/'.$row->id);?>" onclick="return confirm('Yakin Akan Hapus Data Ini?')" class="btn btn-danger"><div class="btn btn-danger btn-sm"><img src="<?php echo base_url('aksicendekia/asset/icon/sampah.png')?>"></i></div> hapus</a></td>
+                <td><a href="<?php echo site_url('AuthAdmin/tolak/'.$row->id);?>" onclick="return confirm('Yakin untuk menolak Data Ini?')" class="btn btn-warning"><div class="btn btn-warning btn-sm"><img src="<?php echo base_url('aksicendekia/asset/icon/silang.png')?>"></div> Tolak</a></td>
+                <td><a href="<?php echo site_url('AuthAdmin/terima/'.$row->id);?>" onclick="return confirm('Yakin untuk menerima  Data Ini?')" class="btn btn-primary"><div class="btn btn-primary btn-sm"><img src="<?php echo base_url('aksicendekia/asset/icon/centang.png    ')?>"></div> Terima</a></td>
                 
             </tr>
             <?php $no++ ;} ?>

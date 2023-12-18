@@ -2,7 +2,7 @@
 <div class="right_col" role="main">
 <div class="container-fluid">
 <h2>Donatur Data</h2>
-<button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah_penggalangan"><i class="fas fa-plus fa-sm"></i>Tambah Barang</button>
+<button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah_penggalangan"><img src="<?php echo base_url('aksicendekia/asset/icon/tambah.png    ')?>"> Barang</button>
 
     <table class="table table-bordered">
         <tr>
@@ -35,7 +35,7 @@
               
 				<td>
     <a href="<?php echo site_url('AuthAdmin/delete_penggalangan/'.$row->id_penggalangan);?>" onclick="return confirm('Yakin Akan Hapus Data Ini?')" class="btn btn-danger btn-sm">
-        <i class="fa fa-trash"></i> hapus
+    <img src="<?php echo base_url('aksicendekia/asset/icon/sampah.png    ')?>"> hapus
     </a>
 </td>
 

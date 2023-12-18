@@ -14,7 +14,7 @@
                 <td><?php echo $no ?></td>
                 <td><?php echo $row->username; ?></td>
                 <td><?php echo $row->email; ?></td>
-				<td><a href="<?php echo site_url('AuthAdmin/delete_mahasiswa/'.$row->id);?>" onclick="return confirm('Yakin Akan Hapus Data Ini?')" class="btn btn-danger"><div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div> hapus</a></td>
+				<td><a href="<?php echo site_url('AuthAdmin/delete_mahasiswa/'.$row->id);?>" onclick="return confirm('Yakin Akan Hapus Data Ini?')" class="btn btn-danger"><div class="btn btn-danger btn-sm"><img src="<?php echo base_url('aksicendekia/asset/icon/sampah.png    ')?>"></div> hapus</a></td>
             </tr>
         <?php $no++ ;} ?>
     </table>
