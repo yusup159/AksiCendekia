@@ -214,12 +214,17 @@ class AuthModel extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
-    public function getJoinedData() {
-        $this->db->select('*');
+    public function getJoinedData($limit, $start) {
+        $this->db->select('pengajuan.*, penggalangan_dana.*'); 
         $this->db->from('pengajuan');
         $this->db->join('penggalangan_dana', 'pengajuan.id = penggalangan_dana.id_pengajuan');
+        $this->db->limit($limit, $start);
         $query = $this->db->get();
-        return $query->result();
+        return $query->result_array();
+    }
+    
+    public function countPenggalangan(){
+        return $this->db->get('penggalangan_dana')->num_rows();
     }
     public function searchData($query) {
         $this->db->select('*');

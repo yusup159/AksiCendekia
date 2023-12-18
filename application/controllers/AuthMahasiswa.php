@@ -98,13 +98,51 @@ class AuthMahasiswa extends CI_Controller {
         if (!$this->session->userdata('id')) {
             redirect('AuthMahasiswa/index');
         }
+        $this->load->library('pagination');
+
+        
+        $config['base_url'] = 'http://localhost/AksiCendikia/index.php/AuthMahasiswa/dashboard/';
+        $config['total_rows'] = $this->AuthModel->countPenggalangan();
+        $config['per_page'] = 9;
+
+        $config['full_tag_open']='<nav><ul class="pagination">' ; 
+        $config['full_tag_close']=' </ul></nav>' ; 
+
+        $config['first_link'] = 'First';
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+
+        $config['last_link'] = 'Last';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+
+        $config['prev_link'] = '&raquo';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+
+        $config['attributes'] = array('class' => 'page-link');
+        
         $user_id = $this->session->userdata('id');
         $mahasiswa_data = $this->AuthModel->get_mahasiswa_by_id($user_id);
         $data['mahasiswa'] = $mahasiswa_data;
-        $data['result'] = $this->AuthModel->getJoinedData();
+        $data['start'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $data['result'] = $this->AuthModel->getJoinedData($config['per_page'], $data['start']);
 
+        $this->pagination->initialize($config);
 		$this->load->view('mahasiswa/template/dashboard',$data);
 	}
+
+
     public function search() {
         $query = $this->input->get('query');
         $user_id = $this->session->userdata('id');
@@ -113,7 +151,9 @@ class AuthMahasiswa extends CI_Controller {
         $data['result'] = $this->AuthModel->searchData($query);
         $this->load->view('mahasiswa/search', $data);
     }
-    
+     
+        
+       
     
 
 

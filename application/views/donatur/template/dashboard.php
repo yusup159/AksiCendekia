@@ -78,23 +78,28 @@
         <?php
 foreach ($result as $row) {?>
                     <div class="card col-lg-4 mb-3">
-                        <img src="<?php echo base_url('foto1_pengajuan/'.$row->foto1); ?>" class="card-img-top" alt="...">
+                        
+                        <img src="<?= base_url('foto1_pengajuan/' . $row['foto1']); ?>" class="card-img-top" alt="..." style="height: 200px;">
                         <div class="card-body">
-                    <a href="<?php echo site_url('AuthDonatur/detail_donasi/'.$row->id_penggalangan) ?>">
-                                <p class="penyelenggara"><?= $row->UKM ?></p>
-                                <h5 class="card-title"><?= $row->judul ?></h5>
-                                <p class="nominal"><span>Rp. <?= number_format($row->jumlahdonasi) ?> </span> Dana Terkumpul</p>
+                    <a href="<?php echo site_url('AuthDonatur/detail_donasi/'.$row['id_penggalangan']) ?>">
+                                <p class="penyelenggara"><?= $row['UKM'] ?></p>
+                                <h5 class="card-title"><?= $row['judul'] ?></h5>
+                                <p class="nominal"><span>Rp. <?= number_format($row['jumlahdonasi']) ?> </span> Dana Terkumpul</p>
                         </a>
 
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: <?= ($row->jumlahdonasi / $row->donasi) * 100 ?>%" aria-valuenow="<?= ($row->jumlahdonasi / $row->donasi) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                        <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <?= ($row['jumlahdonasi'] / $row['donasi']) * 100 ?>%" aria-valuenow="<?= ($row['jumlahdonasi'] / $row['donasi']) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
                         </div>
 
                     </div>
                 
                 <?php } ?>
+
         </div>
+        <div class="pagination justify-content-center ">
+    <?php echo $this->pagination->create_links(); ?>
+</div>
     </div>
 </div>
     <!-- Card -->
@@ -148,13 +153,13 @@ foreach ($result as $row) {?>
         </div>
     </div> -->
     <!-- Card 2 -->
-    <div class="container mt-5">
+    <!-- <div class="container mt-5">
         <div class="seeall text-center">
             <a href="#">
                 <button class="btn btn-seeall"> Lihat Semua</button>
             </a>
         </div>
-    </div>
+    </div> -->
 
     <!-- Footer -->
     <footer class="footer">
