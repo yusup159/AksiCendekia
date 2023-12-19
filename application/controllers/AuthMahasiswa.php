@@ -27,22 +27,22 @@ class AuthMahasiswa extends CI_Controller {
     $this->form_validation->set_rules('password', 'Password', 'required');
 
     if ($this->form_validation->run() == FALSE) {
-        // Jika validasi gagal, kembali ke halaman login
+        
         $this->load->view('mahasiswa/login');
     } else {
-        // Ambil data dari formulir login
+       
         $email = $this->input->post('email');
         $password = $this->input->post('password');
 
-        // Lakukan login
+   
         $user = $this->AuthModel->login_mahasiswa($email, $password);
 
         if ($user) {
-            // Simpan data user ke session
+           
             $user_data = array(
-                'id' => $user->id, // adjust this based on your user data structure
-                'email' => $user->email, // adjust this based on your user data structure
-                // add more data as needed
+                'id' => $user->id, 
+                'email' => $user->email, 
+                
             );
 
             $this->session->set_userdata($user_data);
@@ -65,10 +65,10 @@ class AuthMahasiswa extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            // Jika validasi gagal, kembali ke halaman register
+           
             $this->load->view('Mahasiswa/register');
         } else {
-            // Ambil data dari formulir register
+        
             $data = array(
                 'asal_kampus' => $this->input->post('asal_kampus'),
                 'nim' => $this->input->post('nim'),
@@ -77,10 +77,10 @@ class AuthMahasiswa extends CI_Controller {
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
             );
 
-            // Lakukan register
+           
             $this->AuthModel->register_mahasiswa($data);
 
-            // Redirect ke halaman login setelah register berhasil
+            
             redirect('AuthMahasiswa/index');
         }
     }
@@ -178,39 +178,39 @@ class AuthMahasiswa extends CI_Controller {
     }
 
     public function edit_profil_mhs() {
-        // Lakukan validasi form jika diperlukan
+       
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('asal_kampus', 'Asal Universitas', 'required');
         $this->form_validation->set_rules('nim', 'Nomor Induk Mahasiswa', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            // Jika validasi gagal, tampilkan kembali form dengan error
+            
             $this->load->view('mahasiswa/edit_profil_mahasiswa');
         } else {
-            // Ambil data dari form
+          
             $username = $this->input->post('username');
             $email = $this->input->post('email');
             $asal_kampus = $this->input->post('asal_kampus');
             $nim = $this->input->post('nim');
 
-            // Upload foto jika ada
+           
             $config['upload_path'] = './Asset/foto_mahasiswa/';
             $config['allowed_types'] = 'jpg|jpeg|png';
-            $config['max_size'] = 10048; // 2MB max size
+            $config['max_size'] = 10048;
 
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('foto')) {
                 $foto = $this->upload->data('file_name');
             } else {
-                $foto = $this->input->post('foto_lama'); // Jika foto tidak diupload, gunakan foto lama
+                $foto = $this->input->post('foto_lama'); 
             }
 
-            // Panggil model untuk menyimpan perubahan
+           
             $this->AuthModel->edit_profil($username, $email, $asal_kampus, $nim, $foto);
 
-            // Redirect atau tampilkan pesan sukses
+         
             redirect('AuthMahasiswa/profil_mahasiswa');
         }
     }
@@ -325,7 +325,7 @@ class AuthMahasiswa extends CI_Controller {
         if ($this->upload->do_upload('foto3')) {
             $data['foto3'] = $this->upload->data('file_name');
         } else {
-            // Handle error
+            
         }
     
         

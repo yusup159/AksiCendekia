@@ -33,11 +33,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="./mainpage.html" class="brand-link">
+            <!-- Brand Logo --><a href="<?php echo site_url('AuthMahasiswa/dashboard')?>" class="brand-link">
                 <img src="<?php echo base_url('aksicendekia/asset/foto/aksilogo.png')?>" class="ml-2" alt="">
-                <span class="brand-text font-weight-light">.</span>
             </a>
+           
 
             <!-- Sidebar -->
             <div class="sidebar">
@@ -113,6 +112,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg">
                             <form action="<?php echo site_url('AuthMahasiswa/inputpengajuan')?>" method="post" enctype="multipart/form-data">
                             <div class="banner-galang">
+                            <img src="/aksicendekia/css/" alt="">
                             </div>
                             <div>
                                 <label for="formFile" class="form-label">Nama Kegiatan</label>

@@ -108,7 +108,7 @@
                         <!-- /.col-md-6 -->
                         <div class="col-lg">
                             <div class="banner-galang">
-
+                                <img src="/aksicendekia/css/" alt="">
                             </div>
                             <h3 class="text-bold mt-4">Mekanisme Penggalangan Dana</h3>
                             <p class="mt-4">Halo Kawan Cendekia, selamat datang. Dalam rangka untuk menjaga transparansi

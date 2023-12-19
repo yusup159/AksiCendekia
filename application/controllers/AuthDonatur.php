@@ -68,17 +68,7 @@ class AuthDonatur extends CI_Controller {
         }
     }
     
-	// public function dashboard(){
-    //     if (!$this->session->userdata('id')) {
-    //         redirect('AuthDonatur/index');
-    //     }
-    //     $user_id = $this->session->userdata('id');
-    //     $donatur = $this->AuthModel->get_donatur_by_id($user_id);
-    //     $data['donatur'] = $donatur;
-    //     $data['result'] = $this->AuthModel->getJoinedData();
 
-	// 	$this->load->view('donatur/template/dashboard',$data);
-	// }
     public function dashboard(){
         if (!$this->session->userdata('id')) {
             redirect('AuthMahasiswa/index');
@@ -154,39 +144,39 @@ class AuthDonatur extends CI_Controller {
         $this->load->view('donatur/editprofil',$data);
     }
     public function edit_profil_dntr() {
-        // Lakukan validasi form jika diperlukan
+        
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            // Jika validasi gagal, tampilkan kembali form dengan error
+           
             $this->load->view('donatur/editprofil');
         } else {
-            // Ambil data dari form
+           
             $username = $this->input->post('username');
             $email = $this->input->post('email');
             $nama = $this->input->post('nama');
             $alamat = $this->input->post('alamat');
 
-            // Upload foto jika ada
+            
             $config['upload_path'] = './Asset/foto_donatur/';
             $config['allowed_types'] = 'jpg|jpeg|png';
-            $config['max_size'] = 10048; // 2MB max size
+            $config['max_size'] = 10048; 
 
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('foto')) {
                 $foto = $this->upload->data('file_name');
             } else {
-                $foto = $this->input->post('foto_lama'); // Jika foto tidak diupload, gunakan foto lama
+                $foto = $this->input->post('foto_lama'); 
             }
 
-            // Panggil model untuk menyimpan perubahan
+          
             $this->AuthModel->edit_profil_donatur($username, $email, $nama, $alamat, $foto);
 
-            // Redirect atau tampilkan pesan sukses
+           
             redirect('AuthDonatur/profil_donatur');
         }
     }

@@ -179,7 +179,7 @@ class AuthAdmin extends CI_Controller {
         $this->load->view('admin/template/footer');
     }
     public function input_penggalangan() {
-        // Ambil data dari form
+        
         $data = array(
             'judul' => $this->input->post('judul'),
             'deskripsi' => $this->input->post('deskripsi'),
@@ -189,10 +189,10 @@ class AuthAdmin extends CI_Controller {
   
         );
 
-        // Panggil method model untuk menyimpan data
+       
         $this->AuthModel->tambahDataPenggalangan($data);
 
-        // Redirect ke halaman tertentu setelah input data berhasil
+        
         redirect('AuthAdmin/data_penggalangan');
     }
     public function delete_penggalangan($id) {

@@ -157,7 +157,7 @@ class AuthModel extends CI_Model {
         return $query->result();
     }
     public function getPengajuanData() {
-        $this->db->order_by('created_at', 'DESC'); // Mengurutkan berdasarkan tanggal terbaru
+        $this->db->order_by('created_at', 'DESC');
         $query = $this->db->get('pengajuan');
         return $query->result();
     }
@@ -264,7 +264,7 @@ class AuthModel extends CI_Model {
         $this->db->join('penggalangan_dana AS pd', 'au.id_alluser = pd.id_pengajuan');
         $this->db->join('transaksi AS t', 'au.id_alluser = t.id_alluser');
         $this->db->join('mahasiswa AS m', 'au.id_mahasiswa = m.id');
-        $this->db->order_by('t.created_at', 'DESC'); // Menambahkan perintah ORDER BY
+        $this->db->order_by('t.created_at', 'DESC'); 
         $query = $this->db->get();
         return $query->result();
     }
@@ -275,7 +275,7 @@ class AuthModel extends CI_Model {
         $this->db->join('penggalangan_dana AS pd', 'au.id_alluser = pd.id_pengajuan');
         $this->db->join('transaksi AS t', 'au.id_alluser = t.id_alluser');
         $this->db->join('donatur AS d', 'au.id_donatur = d.id');
-        $this->db->order_by('t.created_at', 'DESC'); // Menambahkan perintah ORDER BY
+        $this->db->order_by('t.created_at', 'DESC'); 
         $query = $this->db->get();
         return $query->result();
     }
@@ -335,48 +335,49 @@ class AuthModel extends CI_Model {
         }
     }
     public function get_transaction_data_by_mahasiswa_id($mahasiswa_id) {
-        // Langkah 1: Dapatkan email dari tabel mahasiswa berdasarkan ID mahasiswa
+        
         $this->db->select('email');
         $this->db->from('mahasiswa');
         $this->db->where('id', $mahasiswa_id);
         $query_mahasiswa = $this->db->get();
 
-        // Periksa apakah query berhasil dan hasilnya tidak kosong
+       
         if ($query_mahasiswa->num_rows() > 0) {
             $mahasiswa_data = $query_mahasiswa->row();
             $email_mahasiswa = $mahasiswa_data->email;
 
-            // Langkah 2: Gunakan email untuk mencari ID alluser dari tabel alluser
+            
             $this->db->select('id_alluser');
             $this->db->from('alluser');
             $this->db->where('email', $email_mahasiswa);
             $query_alluser = $this->db->get();
 
-            // Periksa apakah query berhasil dan hasilnya tidak kosong
+            
             if ($query_alluser->num_rows() > 0) {
                 $alluser_data = $query_alluser->row();
                 $alluser_id = $alluser_data->id_alluser;
 
-                // Langkah 3: Gunakan ID alluser untuk mencari data transaksi yang di-join dengan data penggalangan dana
+                
                 $this->db->select('*');
                 $this->db->from('transaksi');
                 $this->db->join('penggalangan_dana', 'transaksi.id_penggalangan = penggalangan_dana.id_penggalangan');
                 $this->db->where('transaksi.id_alluser', $alluser_id);
+                $this->db->order_by('transaksi.created_at', 'DESC'); 
                 $query_transaksi = $this->db->get();
 
-                // Periksa apakah query berhasil
+                
                 if ($query_transaksi->num_rows() > 0) {
                     return $query_transaksi->result();
                 } else {
-                    // Jika tidak ada hasil dari query transaksi
+                   
                     return null;
                 }
             } else {
-                // Jika tidak ada hasil dari query alluser
+                
                 return null;
             }
         } else {
-            // Jika tidak ada hasil dari query mahasiswa
+           
             return null;
         }
     }
@@ -404,6 +405,7 @@ class AuthModel extends CI_Model {
                 $this->db->from('transaksi');
                 $this->db->join('penggalangan_dana', 'transaksi.id_penggalangan = penggalangan_dana.id_penggalangan');
                 $this->db->where('transaksi.id_alluser', $alluser_id);
+                $this->db->order_by('transaksi.created_at', 'DESC'); 
                 $query_transaksi = $this->db->get();
 
                 if ($query_transaksi->num_rows() > 0) {
